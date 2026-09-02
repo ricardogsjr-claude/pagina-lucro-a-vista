@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sem Crise Sem Caos · o guia de finanças para quem vive do digital</title>
+<meta name="description" content="O livro digital da contadora Vanessa Gonçalves. 76 páginas, dez capítulos e um diagnóstico ao fim de cada conceito, para ler no seu ritmo. R$ 37.">
+<meta property="og:title" content="Sem Crise Sem Caos">
+<meta property="og:description" content="O guia de finanças para quem vive do digital, escrito para ser lido numa sentada e aplicado no mesmo dia. R$ 37.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/l01/capa_sem_crise_sem_caos.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<!-- ============================================================
+     META PIXEL — PLACEHOLDER (substituir <PIXEL_ID> ou rodar /trafego-pixel)
+     Eventos do downsell: PageView (auto) · ViewContent (oferta) · InitiateCheckout (CTA)
+     <script>
+     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+     n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+     n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+     t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+     document,'script','https://connect.facebook.net/en_US/fbevents.js');
+     fbq('init','<PIXEL_ID>'); fbq('track','PageView');
+     </script>
+     <noscript><img height="1" width="1" style="display:none"
+     src="https://www.facebook.com/tr?id=<PIXEL_ID>&ev=PageView&noscript=1"/></noscript>
+     ============================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,300..700;1,300..700&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&display=swap">
+<style>
+/* =========================================================================
+   DS INFOCONTABILIDADE — tokens copiados de pagina_A.html (fonte única).
+   Nada aqui diverge da página principal: mesma escala escura, mesmo ouro,
+   mesma tipografia (Fraunces / Manrope / JetBrains Mono).
+   ========================================================================= */
+:root{
+  --bg:#0B0A08; --ink:#F7F4EE; --ink-2:#C4BCB1; --ink-3:#8E8479; --ink-4:#948A7E;
+  --gold:#C9A742; --gold-hi:#E8CE86; --gold-deep:#B38A25; --line:rgba(232,206,134,.18);
+  --surface:#17131C; --gold-ink:#E8CE86; --gold-bg:rgba(201,167,66,.12);
+  --serif:'Fraunces',Georgia,'Times New Roman',serif;
+  --sans:'Manrope',system-ui,-apple-system,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,'SF Mono',monospace;
+  --ease:cubic-bezier(.22,.61,.36,1); --spring:cubic-bezier(.34,1.56,.64,1);
+  --maxw:1120px; --heal:0%;
+  --sec-pad:clamp(80px,8.5vw,120px); --sec-pad-lg:clamp(104px,11vw,160px); --sec-pad-sm:clamp(56px,6vw,84px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;overflow-x:clip;overscroll-behavior-y:none;background:var(--bg)}
+body{background:var(--bg);color:var(--ink-2);font-family:var(--sans);font-size:17.5px;line-height:1.72;overflow-x:clip;overscroll-behavior:none}
+::selection{background:rgba(198,154,62,.3);color:#FFFFFF}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.04;letter-spacing:-.02em;color:#FFFFFF}
+em{font-style:italic;color:var(--gold-hi)}
+strong{color:#FFFFFF;font-weight:600}
+p{margin:0 0 1.15em}p:last-child{margin-bottom:0}
+img{max-width:100%;height:auto}
+
+/* superfície de cerâmica (mesma textura da pagina_A) */
+.surf,.surf-gold,.veil{position:fixed;inset:0;z-index:0;pointer-events:none}
+.surf{background:#0B0A08 url('assets/l01/texturas/textura_roxo_ouro.jpg') center/cover no-repeat;filter:saturate(.14) brightness(.5) contrast(1.04)}
+.surf-gold{background:#0B0A08 url('assets/l01/texturas/textura_roxo_ouro.jpg') center/cover no-repeat;filter:saturate(1.2) brightness(1) contrast(1.1);
+  -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 var(--heal),rgba(0,0,0,.35) calc(var(--heal) + 30%),transparent calc(var(--heal) + 55%));
+          mask-image:linear-gradient(to bottom,#000 0%,#000 var(--heal),rgba(0,0,0,.35) calc(var(--heal) + 30%),transparent calc(var(--heal) + 55%))}
+.veil{background:linear-gradient(rgba(11,10,8,.22),rgba(11,10,8,.22)),radial-gradient(130% 100% at 50% 30%,rgba(11,10,8,0) 34%,rgba(11,10,8,.5) 100%)}
+main{position:relative;z-index:2}
+
+section{position:relative;padding:var(--sec-pad) 28px}
+section.cont{padding-top:var(--sec-pad-sm)}
+.wrap{max-width:720px;margin:0 auto;position:relative}
+.label{font-family:var(--mono);font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:14px;margin-bottom:26px}
+.label::before{content:"";width:34px;height:1px;background:var(--gold)}
+.rule{width:54px;height:1px;background:var(--gold);margin:30px 0}
+.lead{font-size:20px;color:var(--ink)}
+.pull{margin:44px 0;font-family:var(--serif);font-style:italic;font-size:clamp(24px,3.8vw,32px);line-height:1.42;color:#FFFFFF;max-width:28ch}
+.pull .hl{color:var(--gold-hi)}
+.note{font-size:14px;color:var(--ink-3);font-style:italic;margin-top:24px}
+
+/* header */
+.bar{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px 28px;background:rgba(11,10,8,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transform:translateY(-100%);transition:transform .5s var(--ease),border-color .5s var(--ease)}
+.bar.show{transform:translateY(0);border-color:var(--line)}
+.bar .bm{font-family:var(--serif);font-style:italic;font-size:16px;color:#FDFCFA;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bar .bm span{color:var(--gold-hi)}
+.bar .blink{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#FDFCFA;text-decoration:none;border:1px solid var(--line);padding:9px 18px;border-radius:2px;white-space:nowrap;transition:all .35s var(--spring)}
+.bar .blink:hover{background:var(--gold);color:#1A0F2E;border-color:var(--gold)}
+
+/* botão */
+.btn{display:inline-block;position:relative;font-family:var(--sans);font-weight:600;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:#1A0F2E;background:linear-gradient(180deg,var(--gold-hi),var(--gold));text-decoration:none;padding:21px 43px;border-radius:2px;border:0;transition:transform .4s var(--spring),box-shadow .4s var(--ease);box-shadow:0 12px 34px rgba(198,154,62,.28)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 18px 46px rgba(198,154,62,.4)}
+.btn:focus-visible{outline:2px solid var(--gold-hi);outline-offset:4px}
+.under{margin-top:15px;font-family:var(--mono);font-size:12.5px;color:var(--ink-3)}
+.under b{color:var(--gold-hi);font-weight:500}
+
+/* capa do livro em moldura de ouro (peça real: 1ª página do PDF entregue) */
+.cover{position:relative;padding:6px;border-radius:6px;background:linear-gradient(135deg,var(--gold-deep),var(--gold-hi) 46%,var(--gold));box-shadow:0 26px 64px rgba(0,0,0,.6);max-width:340px;margin:0 auto;isolation:isolate}
+/* height:auto e obrigatorio: o atributo height="1600" do <img> vence o aspect-ratio
+   e a capa renderiza 1600px de altura, cortando o titulo no object-fit */
+.cover img{display:block;width:100%;height:auto;aspect-ratio:1130/1600;object-fit:contain;border-radius:3px;background:#17131C}
+.cover .sheen{position:absolute;inset:6px;border-radius:3px;overflow:hidden;pointer-events:none}
+.cover .sheen::after{content:"";position:absolute;top:-60%;left:-140%;width:70%;height:220%;background:linear-gradient(100deg,transparent,rgba(242,210,122,.18),rgba(255,255,255,.1),transparent);transform:rotate(14deg)}
+.js .cover.in .sheen::after{animation:cvSheen 1.5s var(--ease) .5s 1 both}
+@keyframes cvSheen{to{left:150%}}
+.js .cover{opacity:0;transform:translateY(30px) scale(.95);transition:opacity .9s var(--ease),transform 1s var(--spring)}
+.js .cover.in{opacity:1;transform:none}
+.motion .cover:hover{transform:translateY(-6px) scale(1.015);transition:transform .5s var(--spring)}
+.cover-cap{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);text-align:center;margin:18px 0 0}
+
+/* listas, oferta, garantia */
+.deliv{list-style:none;margin:6px 0 0}
+.deliv li{position:relative;padding:15px 0 15px 30px;border-bottom:1px solid var(--line);font-size:16.5px;color:var(--ink-2)}
+.deliv li:last-child{border-bottom:none}
+.deliv li::before{content:"";position:absolute;left:2px;top:22px;width:8px;height:8px;background:var(--gold);transform:rotate(45deg)}
+.deliv li b{color:#FFFFFF}
+.offer{background:rgba(20,17,13,.66);border:1px solid var(--line);border-radius:8px;padding:clamp(28px,5vw,42px) clamp(22px,4.4vw,40px)}
+.stack{width:100%;border-collapse:collapse;font-size:16px}
+.stack td{padding:14px 4px;border-bottom:1px solid var(--line);color:var(--ink-2)}
+.stack td .m{display:block;color:var(--ink-3);font-size:14.5px}
+.stack td.v{text-align:right;font-family:var(--mono);font-size:14px;color:var(--ink-3);white-space:nowrap;vertical-align:top}
+.stack tr.price td{border-bottom:none;padding-top:18px}
+.stack tr.price .lab{font-family:var(--serif);font-size:21px;color:#FFFFFF}
+.stack tr.price .v{font-family:var(--serif);font-size:clamp(36px,8vw,46px);color:var(--gold-hi);font-weight:600}
+.guar{border:1px solid var(--gold);border-radius:6px;padding:clamp(26px,5vw,40px) clamp(22px,4.4vw,38px);background:rgba(20,17,13,.5)}
+.guar .gt{font-family:var(--serif);font-size:23px;color:#FFFFFF;font-weight:600;margin-bottom:12px;font-style:italic}
+.cta-area{margin-top:30px}
+
+/* credencial verificável (prova de mecanismo) */
+.cred{margin-top:32px;border-left:2px solid var(--gold);padding:4px 0 4px 20px}
+.cred b{display:block;font-family:var(--sans);font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-hi);margin-bottom:8px}
+.cred p{font-size:15.5px;color:var(--ink-2);margin:0}
+
+/* FAQ (mesmos componentes da pagina_A) */
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:22px 40px 22px 0;position:relative;font-family:var(--serif);font-size:19px;color:#FFFFFF;font-weight:500}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:4px;top:31px;width:12px;height:1px;background:var(--gold)}
+.faq summary::before{content:"";position:absolute;right:9px;top:26px;width:1px;height:12px;background:var(--gold);transition:transform .35s var(--ease)}
+.faq details[open] summary::before{transform:scaleY(0)}
+.faq .ans{padding:0 0 24px;font-size:16px;color:var(--ink-2);max-width:62ch}
+
+.close{text-align:center}
+.close h2{font-size:clamp(34px,6vw,60px);line-height:1.04}
+.sig{margin-top:44px;font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.sig i{display:block;margin-top:10px;font-family:var(--serif);font-style:italic;font-size:18px;letter-spacing:0;text-transform:none;color:var(--gold-hi)}
+.foot{margin-top:70px;padding-top:36px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-2);text-align:center;max-width:66ch;margin-left:auto;margin-right:auto}
+.foot a{color:inherit;text-decoration:underline}
+
+/* HERO estático (sem vídeo, sem filme por scroll) */
+.hero{padding:clamp(118px,15vh,158px) 28px clamp(72px,9vh,104px)}
+.hero .hin{max-width:var(--maxw);margin:0 auto}
+.hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:clamp(34px,5vw,64px);align-items:center}
+.hero h1{font-size:clamp(32px,4.9vw,58px);line-height:1.05;letter-spacing:-.026em;color:#FFFFFF}
+.hero h1 em{font-style:italic;color:var(--gold-hi)}
+.hero .anchor{margin-top:20px;font-family:var(--mono);font-size:12px;line-height:1.75;color:var(--ink-2);max-width:46ch}
+.hero .sub{font-size:clamp(16px,1.5vw,18.5px);color:var(--ink);line-height:1.62;max-width:52ch;margin-top:24px}
+
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .cover{max-width:280px}
+}
+@media(max-width:720px){
+  section{padding:var(--sec-pad-sm) 22px}
+  .hero{padding:110px 22px 68px}
+  .btn{padding:19px 26px;font-size:13px;letter-spacing:.09em}
+  .cta-area .btn{display:block;text-align:center}
+  .bar{padding:13px 18px}
+  .bar .blink{padding:8px 13px;font-size:10px;letter-spacing:.1em}
+}
+
+/* motion discreto */
+.reveal{opacity:1;transform:none}
+.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.js .reveal.in{opacity:1;transform:none}
+.js .reveal[style*="--d"]{transition-delay:var(--d)}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .reveal,.js .cover{opacity:1;transform:none;transition:none}
+  .js .cover.in .sheen::after{animation:none}
+  .motion .cover:hover{transform:none}
+  .surf-gold{-webkit-mask-image:none;mask-image:none}
+}
+</style>
+</head>
+<body>
+<div class="surf"></div><div class="surf-gold" id="surfGold"></div><div class="veil"></div>
+
+<header class="bar" id="bar">
+  <span class="bm">Infocontabilidade <span>Sem Crise Sem Caos</span></span>
+  <a class="blink" href="#oferta" data-cta="bar">Ver a oferta</a>
+</header>
+
+<main>
+<!-- ===== BLOCO HERO · headline + sub com validacao da recusa e ponte (modo_downsell) ===== -->
+<section class="hero" id="topo">
+  <div class="hin">
+    <div class="hero-grid">
+      <div>
+        <div class="label reveal">A porta menor</div>
+        <h1 class="reveal" style="--d:.06s">Você faturou bem e não sobrou <em>quase nada</em>.</h1>
+        <p class="anchor reveal" style="--d:.1s">76 páginas. Dez capítulos. Um plano de ação ao fim de cada conceito.</p>
+        <p class="sub reveal" style="--d:.16s">Você decidiu não levar o curso agora, e tudo bem. Se ainda quer entender por onde o dinheiro sai antes de chegar em você, existe um caminho mais simples de começar. É o livro da Vanessa, escrito para ser lido numa sentada e aplicado no mesmo dia.</p>
+        <div class="cta-area reveal" style="--d:.22s">
+          <a class="btn" href="#oferta" data-cta="hero">Quero ver para onde vai o meu dinheiro</a>
+          <div class="under">o livro completo em PDF por <b>R$ 37</b>, no minuto do pagamento</div>
+        </div>
+      </div>
+      <div>
+        <!-- capa REAL: 1a pagina de "Sem Crise Sem Caos.pdf", renderizada em 1130x1600 -->
+        <div class="cover reveal">
+          <img src="assets/l01/capa_sem_crise_sem_caos.png" alt="Capa do livro Sem Crise Sem Caos, de Vanessa Gonçalves" width="1130" height="1600" loading="eager">
+          <span class="sheen"></span>
+        </div>
+        <p class="cover-cap reveal" style="--d:.3s">livro digital completo &nbsp;·&nbsp; PDF</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BLOCO O QUE É · apresentacao e beneficios, pelo indice REAL do PDF ===== -->
+<section>
+  <div class="wrap">
+    <div class="label reveal">O que é</div>
+    <h2 class="reveal" style="--d:.05s;font-size:clamp(28px,4.4vw,46px)">O guia de finanças que a Vanessa escreveu para quem vive do digital.</h2>
+    <div class="rule reveal"></div>
+    <p class="reveal">O livro é curto de propósito, e a regra dele está escrita na abertura: leu, aplicou. Cada conceito novo vem com um plano de ação logo em seguida, para você não terminar a página com uma ideia bonita e nenhuma providência. Isto é o que tem dentro:</p>
+    <ul class="deliv reveal">
+      <li><b>O hábito que mantém a empresa viva.</b> A rotina financeira: o que você olha, com que frequência, e o que decide em cima. Com os três formatos de rotina possíveis e o custo real de cada um.</li>
+      <li><b>O número que define vida ou morte.</b> A margem de contribuição: quanto cada venda deixa de fato depois da taxa da plataforma, da comissão e da mídia atribuída à venda.</li>
+      <li><b>O oxigênio que mantém o negócio vivo.</b> O fluxo de caixa, e a separação que quase ninguém faz entre o resultado do mês e o dinheiro que existe na conta.</li>
+      <li><b>O segredo da máquina enxuta.</b> A estrutura de custos, o peso da folha e o pró-labore definido antes de você tirar, e não pelo saldo que apareceu na tela.</li>
+      <li><b>Enxergando o que o faturamento não mostra.</b> A DRE montada linha a linha, da receita bruta até a última, com os impostos, as taxas e as comissões no ponto exato em que eles saem.</li>
+      <li><b>A matemática da precificação.</b> Refazer um preço com todos os custos, as taxas e os impostos dentro da conta.</li>
+      <li><b>Posicionamento e valor percebido</b> e <b>arquitetura e alavancas de receita.</b> Os dois capítulos que fecham o guia.</li>
+      <li><b>Dois capítulos bônus.</b> Um sobre os processos de execução que sustentam a gestão financeira. Outro, escrito por um advogado, sobre os furos contratuais que drenam a receita de quem presta serviço pelo digital.</li>
+    </ul>
+    <p class="note reveal">Cenário ilustrativo. As contas que o livro usa como exemplo existem para explicar a leitura: não são resultado de aluno nem previsão para o seu negócio.</p>
+  </div>
+</section>
+
+<!-- ===== BLOCO PROVA DE MECANISMO · sem depoimento, a prova é o método e a credencial ===== -->
+<section class="cont">
+  <div class="wrap">
+    <div class="label reveal">A prova</div>
+    <h2 class="reveal" style="--d:.05s;font-size:clamp(26px,4vw,40px)">O livro começa medindo você, não se apresentando.</h2>
+    <div class="rule reveal"></div>
+    <p class="reveal">Antes do primeiro capítulo vem o Diagnóstico de Maturidade Financeira: dez perguntas de sim ou não sobre o seu negócio hoje. Você sabe a sua margem. Você consegue calcular o custo de aquisição por canal. Você separa por completo a conta pessoal da conta da empresa. Você fecha a DRE e o fluxo de caixa todo mês. Você soma a própria pontuação, cai numa das três faixas e já sabe por onde a leitura tem que começar.</p>
+    <p class="reveal">É por isso que a página não precisa de adjetivo. O critério de conclusão está impresso no livro, e você confere se cumpriu antes de virar a página.</p>
+    <p class="reveal">A parte que falta, dita em voz alta: <strong>não existe depoimento de aluno aqui.</strong> Nenhum print, nenhum número de comprador, nenhum nome inventado. O que existe é um registro profissional que você pode conferir agora, antes de decidir.</p>
+    <div class="cred reveal">
+      <b>Vanessa Gonçalves, contadora</b>
+      <p>CRC SE-000715/O &nbsp;·&nbsp; CNPJ 33.961.658/0001-19 &nbsp;·&nbsp; Aracaju, Sergipe. Os dois são públicos. Uma contadora registrada responde a processo ético, e o Código de Ética da profissão proíbe ela de prometer resultado, de garantir número e de comparar o trabalho dela com o de colegas. A norma que limita o que esta página diz é a mesma que protege você como comprador.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BLOCO O TAMANHO CERTO DA PORTA · fronteira livro x combo, sem culpa e sem rebaixar o ancora ===== -->
+<section class="cont">
+  <div class="wrap">
+    <div class="label reveal">O tamanho certo da porta</div>
+    <h2 class="reveal" style="--d:.05s;font-size:clamp(26px,4vw,40px)">O que este livro faz, e o que ele não faz.</h2>
+    <p class="pull reveal">O livro <span class="hl">explica</span> o percurso. O curso <span class="hl">mede</span> o seu mês.</p>
+    <p class="reveal">Aqui está o método em prosa: o percurso que o dinheiro faz da venda até a sua conta, e o que olhar em cada parada. É a leitura de domingo, longe da tela do mês, com calma e uma caneta do lado.</p>
+    <p class="reveal">O que ele não traz: as seis aulas gravadas, o Raio-X do Lucro (o instrumento em que a Vanessa monta o mês por dentro das aulas), o Roteiro da Conversa com o Contador e os dois bônus da oferta maior. Essas peças seguem no combo Lucro à Vista, por R$ 97, que junta o curso a este mesmo livro. Para quem quer ler, entender e decidir sozinho, o livro já entrega o mapa inteiro. E se depois você quiser as aulas, o combo continua ali.</p>
+    <p class="reveal"><strong>Não é para você</strong> se o que procura é um arquivo para baixar e nunca abrir, porque este foi escrito para ser aplicado no mesmo dia. Também não é para quem espera promessa de faturamento ou de economia de imposto. O que ele promete é enxergar, e essa é uma escolha de norma profissional, não de modéstia.</p>
+  </div>
+</section>
+
+<!-- ===== BLOCO A ESCADA DECLARADA · objecoes 5, 4 e a de capacidade pessoal ===== -->
+<section class="cont">
+  <div class="wrap">
+    <div class="label reveal">Antes de você perguntar</div>
+    <div class="faq reveal" style="margin-top:16px">
+      <details>
+        <summary>Isso não está de graça na internet?</summary>
+        <div class="ans">Boa parte está, e é bom. Sebrae, universidade e canal sério ensinam fluxo de caixa e formação de preço sem cobrar nada. E tem um número que mostra o limite disso: 61% dos empreendedores brasileiros seguem pagando a empresa pela conta pessoal, contra 60% em 2023 (Sebrae, Hábitos Financeiros 2025). Com todo esse conteúdo gratuito disponível há anos, o número não se moveu. O que o gratuito não entrega é a ordem: o que registrar primeiro, o que separar do seu bolso antes de qualquer conta, o que entra como custo variável, quanto provisionar antes de retirar, e qual linha responde à sua pergunta. Este livro é essa ordem por escrito.</div>
+      </details>
+      <details>
+        <summary>Depois dos R$ 37 vem alguma coisa cara?</summary>
+        <div class="ans">Não vem call obrigatória, não vem formulário de aplicação e não vem etapa que termina em oferta. E como a pergunta é essa, vai o mapa inteiro: existe o combo Lucro à Vista, por R$ 97, que junta as seis aulas do curso a este mesmo livro; e existe o serviço de contabilidade e BPO da Infocontabilidade, para quem, depois de aprender a ler o próprio número, decidir delegar a operação, conversado caso a caso. Nenhum dos dois é necessário para usar o que você recebe aqui. Você conhece os degraus antes de entrar.</div>
+      </details>
+      <details>
+        <summary>Eu já pago um contador. Isso serve para mim?</summary>
+        <div class="ans">Serve, e o seu contador continua onde está. Contabilidade fiscal entrega guia e obrigação acessória, que é o trabalho dele e precisa ser feito. Ler o mês para decidir preço, retirada e corte é outro trabalho, e ele é seu, porque quem decide é você. O livro te dá o vocabulário para pedir o relatório no formato que você consegue ler. A relação melhora, não piora.</div>
+      </details>
+      <details>
+        <summary>Não sou de números. Vou dar conta?</summary>
+        <div class="ans">O livro foi escrito sem contabilês, e o teste é simples: cada termo técnico que aparece vem traduzido na frase seguinte. Você não precisa aprender contabilidade, precisa aprender a ler algumas coisas na ordem certa. E se ainda assim não fizer sentido para você, existem sete dias para devolver sem explicar nada.</div>
+      </details>
+      <details>
+        <summary>Como eu recebo?</summary>
+        <div class="ans">Em PDF, liberado no minuto do pagamento, para ler no computador, no tablet ou no celular. São 76 páginas, o arquivo inteiro de uma vez, sem capítulo que abre depois. O que você leva hoje é o livro completo.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BLOCO OFERTA · stack curta, preco, CTA e garantia ===== -->
+<section id="oferta">
+  <div class="wrap">
+    <div class="label reveal">A oferta</div>
+    <h2 class="reveal" style="--d:.05s;font-size:clamp(28px,4.4vw,46px)">O livro completo, com os dois capítulos bônus.</h2>
+    <div class="rule reveal"></div>
+    <div class="offer reveal">
+      <table class="stack"><tbody>
+        <tr><td>Sem Crise Sem Caos<span class="m">o livro digital completo em PDF, 76 páginas</span></td><td class="v">incluso</td></tr>
+        <tr><td>Diagnóstico de Maturidade Financeira<span class="m">as dez perguntas de abertura, com a sua pontuação</span></td><td class="v">incluso</td></tr>
+        <tr><td>Dois capítulos bônus<span class="m">processos de execução e furos contratuais</span></td><td class="v">incluso</td></tr>
+      </tbody><tfoot>
+        <tr class="price"><td class="lab">Você leva hoje por</td><td class="v">R$ 37</td></tr>
+      </tfoot></table>
+      <div class="cta-area" style="margin-top:24px">
+        <!-- PLACEHOLDER: trocar pelo link real do ebook na Hotmart quando ele existir -->
+        <a class="btn" href="https://pay.hotmart.com/O107433527V" data-cta="checkout" data-checkout style="width:100%;text-align:center">Quero começar pela leitura por R$ 37</a>
+        <div class="under" style="text-align:center">produto próprio, com preço próprio &nbsp;·&nbsp; acesso ao PDF no minuto do pagamento</div>
+      </div>
+    </div>
+    <div class="guar reveal" style="margin-top:34px">
+      <div class="label" style="margin-bottom:12px">A garantia</div>
+      <div class="gt">Sete dias para testar sem risco.</div>
+      <p style="color:var(--ink-2);margin:0">Você compra, abre o livro inteiro no mesmo minuto e tem sete dias para pedir o dinheiro de volta. A devolução é <strong>incondicional</strong>, pelo direito de arrependimento do Código de Defesa do Consumidor (art. 49). Sem justificar, sem formulário de motivo e sem provar que leu. É a mesma garantia da oferta maior, e ela não encolhe porque o preço é menor.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BLOCO FECHO · urgencia real, ultimo CTA, assinatura e rodape legal ===== -->
+<section class="close cont">
+  <div class="wrap">
+    <h2 class="reveal">O dinheiro sai por paradas que ninguém te mostrou.<br>Agora dá para <em>lê-las</em>.</h2>
+    <p class="reveal" style="--d:.06s;max-width:52ch;margin:26px auto 0;color:var(--ink-2)">Não existe contagem regressiva nesta página, não existe vaga limitada e não existe preço que sobe amanhã. O livro fica disponível. O que não fica parado é o seu mês, que fecha de novo daqui a poucos dias, com ou sem a leitura.</p>
+    <div class="cta-area reveal" style="--d:.1s;margin-top:32px">
+      <!-- PLACEHOLDER: mesmo link do checkout do ebook -->
+      <a class="btn" href="https://pay.hotmart.com/O107433527V" data-cta="checkout-final" data-checkout>Quero ler antes do próximo fechamento</a>
+      <div class="under">o livro completo em PDF por <b>R$ 37</b> &nbsp;·&nbsp; 7 dias para devolver, sem justificar</div>
+    </div>
+    <p class="sig reveal" style="--d:.16s">Vanessa Gonçalves &nbsp;·&nbsp; Contadora &nbsp;·&nbsp; CRC SE-000715/O
+      <i>Empreender não é uma linha reta.</i></p>
+    <p class="foot reveal" style="--d:.2s">Conteúdo educativo de contabilidade e finanças. Não constitui recomendação de investimento (CVM) nem consultoria contábil individualizada. Resultados dependem da aplicação de cada pessoa ao próprio negócio. Casos citados são reais, anonimizados e ilustrativos de método, nunca previsão de resultado (NBC PG 01).</p>
+  </div>
+</section>
+</main>
+
+<script>
+(function(){
+  var doc=document.documentElement; doc.classList.add('js');
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(!reduce) doc.classList.add('motion');
+
+  /* entradas suaves */
+  var els=[].slice.call(document.querySelectorAll('.reveal,.cover'));
+  function show(el){el.classList.add('in');}
+  if(reduce){els.forEach(show);}
+  else if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){show(e.target);io.unobserve(e.target);}});},{threshold:.16,rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(el){io.observe(el);});
+    setTimeout(function(){if(!document.querySelector('.reveal.in'))els.forEach(show);},1600);
+  } else els.forEach(show);
+
+  /* header e superfície que se repara conforme a leitura avança */
+  var bar=document.getElementById('bar');
+  function onScroll(){
+    var y=window.pageYOffset||0,h=document.body.scrollHeight-window.innerHeight,p=h>0?Math.min(1,Math.max(0,y/h)):0;
+    if(y>window.innerHeight*0.6)bar.classList.add('show');else bar.classList.remove('show');
+    if(!reduce)doc.style.setProperty('--heal',(p*100).toFixed(1)+'%');
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',onScroll,{passive:true});
+  onScroll();
+
+  /* Meta Pixel: só dispara se o pixel do head estiver instalado */
+  function fb(ev,p){try{if(window.fbq)fbq('track',ev,p||{});}catch(e){}}
+  var of=document.getElementById('oferta');
+  if(of&&'IntersectionObserver' in window){
+    var vo=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){fb('ViewContent',{content_name:'downsell_livro_sem_crise_sem_caos',value:37,currency:'BRL'});vo.disconnect();}});},{threshold:.3});
+    vo.observe(of);
+  }
+  document.querySelectorAll('[data-cta]').forEach(function(a){
+    a.addEventListener('click',function(){
+      if(a.hasAttribute('data-checkout'))fb('InitiateCheckout',{content_name:'downsell_livro_sem_crise_sem_caos',value:37,currency:'BRL'});
+      else fb('Lead',{content_name:'cta_'+a.getAttribute('data-cta')});
+    });
+  });
+})();
+</script>
+</body>
+</html>
