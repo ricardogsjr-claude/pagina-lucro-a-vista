@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#0B0A08"/>
+  <!-- ampulheta: a marca da pagina (abertura e fecho rimam nela) -->
+  <path d="M20 14h24v6c0 6-5 9-9 12 4 3 9 6 9 12v6H20v-6c0-6 5-9 9-12-4-3-9-6-9-12v-6z"
+        fill="none" stroke="#C9A742" stroke-width="3.4" stroke-linejoin="round"/>
+  <path d="M25 45c2-3 5-4 7-5 2 1 5 2 7 5 1.4 1.6 1.6 3 1.6 5H23.4c0-2 .2-3.4 1.6-5z" fill="#E8CE86"/>
+  <circle cx="32" cy="30" r="1.8" fill="#E8CE86"/>
+  <circle cx="32" cy="36" r="1.4" fill="#E8CE86" opacity=".7"/>
+</svg>

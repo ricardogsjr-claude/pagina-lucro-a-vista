@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lucro à Vista · fechar o mês sabendo quanto sobrou</title>
+<meta name="description" content="Você fatura todo mês e não sabe quanto sobra. Curso de 6 aulas com a contadora Vanessa Gonçalves, o Raio-X do Lucro e o livro Sem Crise Sem Caos, R$ 97.">
+<meta property="og:title" content="Você fatura todo mês e não sabe quanto sobra">
+<meta property="og:description" content="O dinheiro para em seis paradas antes de chegar em você. Curso de 6 aulas, o Raio-X do Lucro e o livro Sem Crise Sem Caos, R$ 97.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/filme/desktop/poster_final.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,300..700;1,300..700&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&display=swap">
+
+
+<style>
+
+/* ===== HERO ESTATICO + PECAS DE PROVA (01/09, entra no lugar do filme) ===== */
+.heroS{position:relative;min-height:auto;padding:clamp(70px,9vh,120px) 0 clamp(56px,7vh,88px);
+  display:block;overflow:visible;background:var(--bg)}
+.heroS .wrap2{max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+.heroS .duo2{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(28px,4.6vw,66px);align-items:center}
+.heroS h1{font-size:clamp(31px,4.5vw,56px);line-height:1.06;letter-spacing:-.028em;color:var(--ink);margin:0 0 18px}
+.heroS h1 em{font-style:italic;color:var(--gold-ink)}
+.heroS .sub{font-size:clamp(16px,1.5vw,18.5px);color:var(--ink-2);max-width:50ch;line-height:1.62;margin:0 0 30px}
+@media(max-width:880px){.heroS .duo2{grid-template-columns:1fr;gap:34px}}
+
+/* --- a tese em imagem: fecha o hero com a balanca (era so og:image) ---
+   ATENCAO a cascata: .hero (adiante, linha ~200) traz display:flex, min-height:100svh,
+   overflow:hidden e padding proprios, e por vir DEPOIS vence .heroS na mesma
+   especificidade. Por isso o layout do hero estatico se declara com
+   section.hero.heroS (0,0,2,1), que ganha de .hero (0,0,1,0). */
+section.hero.heroS{position:relative;min-height:auto;display:block;overflow:visible;
+  align-items:initial;padding:clamp(70px,9vh,120px) 0 0;background:var(--bg)}
+section.hero.heroS h1{font-size:clamp(31px,4.5vw,56px);line-height:1.06;letter-spacing:-.028em;
+  color:var(--ink);margin:0 0 18px}
+section.hero.heroS .sub{font-size:clamp(16px,1.5vw,18.5px);color:var(--ink-2);max-width:50ch;
+  line-height:1.62;margin:0 0 30px}
+.heroS .tese{position:relative;margin:clamp(48px,7vh,86px) 0 0;height:clamp(230px,32vw,400px);overflow:hidden}
+.heroS .tese img{width:100%;height:100%;object-fit:cover;object-position:center 46%;display:block}
+.heroS .tese::after{content:'';position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,var(--bg) 0%,rgba(11,10,8,.5) 15%,rgba(11,10,8,.1) 42%,rgba(11,10,8,.6) 80%,var(--bg) 100%)}
+.heroS .tese-cap{position:absolute;left:50%;transform:translateX(-50%);bottom:clamp(16px,3vw,32px);z-index:2;margin:0;
+  width:max-content;max-width:min(90vw,36ch);text-align:center;
+  font-family:var(--serif);font-size:clamp(15px,1.8vw,22px);line-height:1.3;color:var(--ink);
+  text-shadow:0 2px 14px rgba(11,10,8,.96),0 0 44px rgba(11,10,8,.85)}
+.heroS .tese-cap em{font-style:italic;color:var(--gold-hi)}
+@media(max-width:720px){.heroS .tese{height:clamp(200px,52vw,300px)}}
+
+
+/* --- a agenda de sexta --- */
+.cal{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;
+  box-shadow:0 30px 60px -46px rgba(10,8,5,.5)}
+.cal-top{padding:15px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;
+  align-items:baseline;gap:12px}
+.cal-top b{font:600 15px/1 var(--sans);color:var(--ink)}
+.cal-top span{font:400 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.slot{display:grid;grid-template-columns:58px 1fr;gap:14px;padding:12px 20px;border-bottom:1px solid var(--line);
+  align-items:center}
+.slot:last-child{border-bottom:none}
+.slot .h{font:400 12.5px/1 var(--mono);color:var(--ink-3)}
+.slot .t{font-size:14.5px;color:var(--ink-2)}
+.slot.fin{background:var(--gold-bg);border-left:3px solid var(--gold)}
+.slot.fin .h{color:var(--gold-ink);font-weight:600}
+.slot.fin .t{color:var(--ink);font-weight:600}
+.slot.fin .t small{display:block;font:400 12px/1.45 var(--sans);color:var(--gold-ink);margin-top:2px}
+
+/* --- as duas DREs --- */
+.duas{display:grid;grid-template-columns:1fr 1fr;gap:clamp(13px,1.9vw,24px)}
+.dre{background:var(--surface);border:1px solid var(--line);border-radius:11px;padding:22px 20px 18px}
+.dre.b{border-color:#CFE3D3;box-shadow:0 1px 0 var(--pos) inset,0 10px 30px -22px rgba(93,148,95,.65)}
+.dre h4{font:600 11.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin:0 0 4px}
+.dre .fat{font-family:var(--serif);font-weight:600;font-size:clamp(21px,2.7vw,31px);line-height:1;
+  color:var(--ink);letter-spacing:-.02em;margin-bottom:16px}
+.dre .lin{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid var(--line);
+  font-size:13.5px;color:var(--ink-3)}
+.dre .lin b{font:400 13.5px/1.5 var(--mono);color:var(--ink-2);white-space:nowrap}
+.dre .res{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-top:14px;
+  padding-top:12px;border-top:2px solid var(--ink)}
+.dre .res span:first-child{font:600 11.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
+.dre .pct{font-family:var(--serif);font-weight:600;font-size:clamp(31px,4.2vw,46px);line-height:1;letter-spacing:-.03em}
+.dre.a .pct{color:var(--neg-ink)}.dre.b .pct{color:var(--pos-ink)}
+.dre .selo{display:inline-block;font:600 10.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;
+  padding:5px 9px;border-radius:3px;margin-top:13px}
+.dre.a .selo{background:var(--neg-bg);color:var(--neg-ink)}
+.dre.b .selo{background:var(--pos-bg);color:var(--pos-ink)}
+.dre-nota{margin-top:18px;font-size:12.5px;color:var(--ink-3);line-height:1.55}
+@media(max-width:640px){.duas{grid-template-columns:1fr}}
+
+
+
+
+
+/* JetBrains Mono veio para o link do Google Fonts (o woff2 local nunca existiu - 404) */
+</style>
+<style>
+:root{
+  /* ===== escala ESCURA (01/09) =====
+     A pagina sempre foi escura: .surf entra com brightness(.5) e os 21 usos de
+     var(--bg) fundem com rgba(11,10,8,.x). O token estava com o valor claro do DS,
+     entao todo titulo branco caia em 1.10:1 sobre creme. --bg passa a ser o chao real. */
+  --bg:#0B0A08; --ink:#F7F4EE; --ink-2:#C4BCB1; --ink-3:#8E8479; --ink-4:#948A7E;
+  --gold:#C9A742; --gold-hi:#E8CE86; --gold-deep:#B38A25; --line:rgba(232,206,134,.18);
+  /* superficie dos cartoes (agenda, DRE, calculadora) sobre o chao escuro */
+  --surface:#17131C; --gold-ink:#E8CE86; --gold-bg:rgba(201,167,66,.12);
+  /* semantica do DS Kintsugi: verde = leu os numeros, vermelho = nao leu */
+  --pos:#6FBF7F; --pos-ink:#93D9A0; --pos-bg:rgba(111,191,127,.14);
+  --neg-ink:#E4A099; --neg-bg:rgba(198,90,80,.16);
+  --serif:'Fraunces',Georgia,'Times New Roman',serif; --sans:'Manrope',system-ui,-apple-system,sans-serif; --mono:'JetBrains Mono',ui-monospace,'SF Mono',monospace;
+  --ease:cubic-bezier(.22,.61,.36,1); --spring:cubic-bezier(.34,1.56,.64,1); --maxw:1120px; --heal:0%;
+  --sec-pad:clamp(80px,8.5vw,120px); --sec-pad-lg:clamp(104px,11vw,160px); --sec-pad-sm:clamp(56px,6vw,84px); --full-top:clamp(96px,12vh,136px); --full-bot:clamp(64px,8vh,96px); --bar-h:86px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--ink-2);font-family:var(--sans);font-size:17.5px;line-height:1.72;overflow-x:hidden}
+::selection{background:rgba(198,154,62,.3);color:#FFFFFF}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.04;letter-spacing:-.02em;color:#FFFFFF}
+em{font-style:italic;color:var(--gold-hi)}
+strong{color:#FFFFFF;font-weight:600}
+p{margin:0 0 1.15em}p:last-child{margin-bottom:0}
+
+/* ===== superfície de cerâmica: a página que se repara em ouro ===== */
+.surf,.surf-gold,.veil{position:fixed;inset:0;z-index:0;pointer-events:none}
+.surf{background:#0B0A08 url('assets/l01/texturas/textura_roxo_ouro.jpg') center/cover no-repeat;filter:saturate(.14) brightness(.5) contrast(1.04)}
+.surf-gold{background:#0B0A08 url('assets/l01/texturas/textura_roxo_ouro.jpg') center/cover no-repeat;filter:saturate(1.2) brightness(1) contrast(1.1);
+  /* impeccable-disable-next-line design-system-color: o #000 aqui e canal alfa da mascara, nao cor de marca */
+  -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 var(--heal),rgba(0,0,0,.35) calc(var(--heal) + 30%),transparent calc(var(--heal) + 55%));
+  /* impeccable-disable-next-line design-system-color: o #000 aqui e canal alfa da mascara, nao cor de marca */
+          mask-image:linear-gradient(to bottom,#000 0%,#000 var(--heal),rgba(0,0,0,.35) calc(var(--heal) + 30%),transparent calc(var(--heal) + 55%))}
+.veil{background:linear-gradient(rgba(11,10,8,.22),rgba(11,10,8,.22)),radial-gradient(130% 100% at 50% 30%,rgba(11,10,8,0) 34%,rgba(11,10,8,.5) 100%)}
+main{position:relative;z-index:2}
+
+section{position:relative;padding:var(--sec-pad) 28px}
+section.cap{padding-top:var(--sec-pad-lg)}
+section.cont{padding-top:var(--sec-pad-sm)}
+section[id],.hero{scroll-margin-top:var(--bar-h)}
+.wrap{max-width:720px;margin:0 auto;position:relative}
+.wide{max-width:var(--maxw)}
+.label{font-family:var(--mono);font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:14px;margin-bottom:26px}
+.label::before{content:"";width:34px;height:1px;background:var(--gold)}
+.label.center::after{content:"";width:34px;height:1px;background:var(--gold)}
+.rule{width:54px;height:1px;background:var(--gold);margin:30px 0}
+.lead{font-size:20px;color:var(--ink)}
+.pull{margin:44px 0;font-family:var(--serif);font-style:italic;font-size:clamp(24px,3.8vw,32px);line-height:1.42;color:#FFFFFF;max-width:28ch}
+.pull .hl{color:var(--gold-hi)}
+
+/* ===== header ===== */
+.bar{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:15px 28px;background:rgba(11,10,8,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transform:translateY(-100%);transition:transform .5s var(--ease),border-color .5s var(--ease)}
+.bar.show{transform:translateY(0);border-color:var(--line)}
+.bar .bm{font-family:var(--serif);font-style:italic;font-size:16px;color:#FDFCFA}.bar .bm span{color:var(--gold-hi)}
+.bar .blink{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#FDFCFA;text-decoration:none;border:1px solid var(--line);padding:9px 18px;border-radius:2px;transition:all .35s var(--spring)}
+.bar .blink:hover{background:var(--gold);color:#1A0F2E;border-color:var(--gold)}
+
+.btn{display:inline-block;position:relative;font-family:var(--sans);font-weight:600;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:#1A0F2E;background:linear-gradient(180deg,var(--gold-hi),var(--gold));text-decoration:none;padding:21px 43px;border-radius:2px;border:0;transition:transform .4s var(--spring),box-shadow .4s var(--ease);box-shadow:0 12px 34px rgba(198,154,62,.28)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 18px 46px rgba(198,154,62,.4)}
+.under{margin-top:15px;font-family:var(--mono);font-size:12.5px;color:var(--ink-3)}.under b{color:var(--gold-hi);font-weight:500}
+
+/* ===== FOTO EM MOLDURA com borda de acento (a peça de apoio visual) ===== */
+.shard{position:relative;isolation:isolate}
+.shard img{width:100%;display:block;object-fit:cover;background:#EDE5DF}
+.shard .seam{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.shard .seam path{fill:none;stroke:url(#goldSeam);stroke-width:4;vector-effect:non-scaling-stroke;filter:drop-shadow(0 0 5px rgba(242,210,122,.55))}
+.js .shard{opacity:0;transform:scale(.93) translateY(26px);transition:opacity .9s var(--ease),transform 1s var(--ease)}
+.js .shard.in{opacity:1;transform:none}
+.js .shard .seam path{stroke-dasharray:440;stroke-dashoffset:440;transition:stroke-dashoffset 1.3s var(--ease) .25s}
+.js .shard.in .seam path{stroke-dashoffset:0}
+.shard .cap{position:absolute;left:16px;bottom:14px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);text-shadow:0 2px 12px rgba(11,10,8,.92);z-index:2}
+/* formas de caco (clip + a mesma no path SVG) */
+.shard.s1 img{-webkit-clip-path:polygon(5% 0,100% 7%,95% 100%,0 90%);clip-path:polygon(5% 0,100% 7%,95% 100%,0 90%);aspect-ratio:4/5}
+.shard.s2 img{-webkit-clip-path:polygon(0 6%,90% 0,100% 84%,10% 100%);clip-path:polygon(0 6%,90% 0,100% 84%,10% 100%);aspect-ratio:1/1}
+.shard.s3 img{-webkit-clip-path:polygon(8% 2%,100% 0,92% 96%,0 100%);clip-path:polygon(8% 2%,100% 0,92% 96%,0 100%);aspect-ratio:4/5}
+.shard.s4 img{-webkit-clip-path:polygon(4% 0,96% 5%,100% 100%,0 95%);clip-path:polygon(4% 0,96% 5%,100% 100%,0 95%);aspect-ratio:3/4}
+
+/* bloco texto+caco */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;max-width:var(--maxw);margin:0 auto}
+.duo.rev{direction:rtl}.duo.rev>*{direction:ltr}
+
+/* ===== galeria das ferramentas (os cacos-documento dourados) ===== */
+.tools-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin:44px auto 0;max-width:940px}
+.tool{position:relative;flex:0 0 calc(25% - 12px);padding:3px;border-radius:4px;background:linear-gradient(135deg,var(--gold-deep),var(--gold-hi) 45%,var(--gold));box-shadow:0 14px 34px rgba(0,0,0,.55);cursor:pointer;outline:none;transition:opacity .5s var(--ease),transform .55s var(--ease),box-shadow .5s var(--ease),filter .4s var(--ease)}
+.tool img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top center;border-radius:2px;background:#FDFCFA}
+.tool figcaption{position:absolute;left:3px;right:3px;bottom:3px;padding:22px 12px 13px;text-align:center;background:linear-gradient(to top,rgba(9,8,6,.98),rgba(9,8,6,.86) 40%,rgba(9,8,6,.2) 82%,transparent);border-radius:0 0 2px 2px}
+.t-name{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#FFFFFF}
+.t-body{display:block}
+.t-what{display:block;font-family:var(--sans);font-size:12.5px;line-height:1.42;color:#EDE5DF}
+.t-gold{display:block;margin-top:7px;font-family:var(--serif);font-style:italic;font-size:12.5px;line-height:1.36;color:var(--gold-hi)}
+/* enlarge + reveal um-por-um: só com motion; sem JS/reduced-motion o texto fica sempre visível (PE) */
+.motion .tools-grid .tool{opacity:0;transform:translateY(38px) scale(.9) rotate(-3deg)}
+.motion .tools-grid .tool:nth-child(even){transform:translateY(38px) scale(.9) rotate(3deg)}
+.motion .tools-grid .tool.in{opacity:1;transform:none}
+.motion .tools-grid .tool .t-body{display:grid;grid-template-rows:0fr;opacity:0;overflow:hidden;transition:grid-template-rows .5s var(--ease),opacity .4s var(--ease)}
+.motion .tools-grid .tool .t-body>*{min-height:0}
+.motion .tools-grid .tool.in:hover,.motion .tools-grid .tool.in:focus,.motion .tools-grid .tool.in.open{transition:transform .35s var(--spring),box-shadow .5s var(--ease);transform:translateY(-14px) scale(1.14);z-index:6;box-shadow:0 34px 72px rgba(0,0,0,.66),0 0 44px rgba(242,210,122,.3)}
+.motion .tools-grid .tool.in:hover .t-body,.motion .tools-grid .tool.in:focus .t-body,.motion .tools-grid .tool.in.open .t-body{grid-template-rows:1fr;opacity:1}
+.motion .tools-grid:hover .tool.in:not(:hover),.motion .tools-grid.has-open .tool.in:not(.open){opacity:.5;filter:saturate(.72)}
+/* foco de teclado dos 8 cartões: FORA do escopo .motion de propósito. A ampliação
+   que abre o corpo do cartão só existe dentro de .motion; sem este anel, quem
+   navega por Tab com movimento reduzido (ou sem JS) fica sem nenhum sinal de foco,
+   porque a regra acima remove o outline nativo. */
+.tool:focus-visible{outline:2px solid var(--gold-hi);outline-offset:4px}
+.tools-grid .tool:focus-visible{z-index:7}
+@media(max-width:900px){.tool{flex:0 0 calc(50% - 8px)}}
+/* respiro do luz do farol - clímax de valor antes da oferta */
+.dustbeat{padding:0}
+.db-frame{position:relative;min-height:64vh;display:flex;align-items:center;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.db-media{position:absolute;inset:0;background:#F6F3F1 radial-gradient(130% 95% at 74% 46%,rgba(242,210,122,.26),rgba(198,154,62,.09) 34%,rgba(11,10,8,0) 62%)}
+.db-media img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.db-veil{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,var(--bg) 0%,rgba(11,10,8,.8) 32%,rgba(11,10,8,.2) 60%,rgba(11,10,8,0) 86%)}
+.db-copy{position:relative;z-index:2;max-width:1180px;margin:0 auto;padding:64px clamp(28px,6vw,80px);width:100%}
+.db-copy h2{font-size:clamp(30px,4.8vw,54px);margin:14px 0 18px}
+.db-copy p{max-width:46ch;color:var(--ink-2)}
+@media(max-width:760px){.db-frame{min-height:0;flex-direction:column}.db-media{position:relative;width:100%;height:52vw;min-height:220px}.db-veil{background:linear-gradient(0deg,var(--bg) 4%,rgba(11,10,8,.5) 40%,transparent 80%)}.db-copy{padding:34px clamp(20px,6vw,40px)}}
+
+/* ===== HERO ===== */
+.hero{min-height:100svh;display:flex;align-items:center;padding:var(--full-top) 0 var(--full-bot);overflow:hidden}
+.hero .stage{position:absolute;inset:0;cursor:crosshair}
+.bowl-base{position:absolute;inset:0;background:url('assets/l01/surreal/balanca_hora.jpg') 22% center/cover no-repeat;filter:saturate(.7) brightness(.82) contrast(1.04)}
+#reveal{position:absolute;inset:0;width:100%;height:100%}
+.hero .hveil{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(11,10,8,.4) 0%,rgba(11,10,8,.12) 30%,rgba(11,10,8,.55) 60%,var(--bg) 88%)}
+.hero .hin{position:relative;z-index:3;width:100%;max-width:1180px;margin:0 auto;padding:0 clamp(28px,6vw,80px);pointer-events:none}
+.hero .hc{margin-left:auto;max-width:600px}
+.hero h1{font-size:clamp(48px,7.2vw,92px);line-height:.98;letter-spacing:-.03em;color:#FFFFFF}
+.hero .sub{font-size:clamp(17px,1.5vw,20px);color:var(--ink);line-height:1.6;max-width:46ch;margin-top:26px}
+.hbul{list-style:none;margin:24px 0 0;display:flex;flex-direction:column;gap:11px}
+.hbul li{position:relative;padding-left:26px;font-size:15.5px;line-height:1.5;color:var(--ink-2);max-width:50ch}
+.hbul li::before{content:"";position:absolute;left:0;top:.5em;width:8px;height:8px;background:var(--gold-hi);transform:rotate(45deg);box-shadow:0 0 9px rgba(242,210,122,.7)}
+.hero .hrule{margin:0 0 28px}
+.hero .cta-area{margin-top:30px;pointer-events:auto}
+.hero .hint{margin-top:24px;font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--ink-3);display:inline-flex;align-items:center;gap:10px}
+.hero .hint .dot{width:7px;height:7px;background:var(--gold-hi);transform:rotate(45deg);flex:0 0 auto}
+.hint .ht{display:none}@media(hover:none){.hint .hd{display:none}.hint .ht{display:inline}}
+html{overflow-x:clip}
+body{overflow-x:clip;overscroll-behavior-x:none}
+@media(pointer:coarse){body{touch-action:pan-y pinch-zoom}.prob input[type=range]{height:44px}}
+@keyframes probNudge{0%,30%,100%{transform:translateX(0)}10%{transform:translateX(30px)}17%{transform:translateX(5px)}23%{transform:translateX(13px)}}
+.motion #probs .prob.idle input[type=range]::-webkit-slider-thumb{animation:probNudge 4.6s cubic-bezier(.34,1.56,.64,1) infinite}
+.motion #probs .prob.idle:nth-child(2) input[type=range]::-webkit-slider-thumb{animation-duration:5.4s;animation-delay:.8s}
+.motion #probs .prob.idle:nth-child(3) input[type=range]::-webkit-slider-thumb{animation-duration:4.1s;animation-delay:1.5s}
+.motion #probs .prob.idle:nth-child(4) input[type=range]::-webkit-slider-thumb{animation-duration:6s;animation-delay:.35s}
+.motion #probs .prob.idle:nth-child(5) input[type=range]::-webkit-slider-thumb{animation-duration:4.9s;animation-delay:2.2s}
+.motion #probs .prob.idle:nth-child(6) input[type=range]::-webkit-slider-thumb{animation-duration:5.6s;animation-delay:1.1s}
+.motion #probs .prob.idle:nth-child(7) input[type=range]::-webkit-slider-thumb{animation-duration:4.3s;animation-delay:1.8s}
+.motion #probs .prob.idle input[type=range]::-moz-range-thumb{animation:probNudge 4.6s cubic-bezier(.34,1.56,.64,1) infinite}
+#probs .prob input[type=range]:active::-webkit-slider-thumb{animation:none}
+@media(prefers-reduced-motion:reduce){#probs input[type=range]::-webkit-slider-thumb,#probs input[type=range]::-moz-range-thumb{animation:none!important}}
+
+/* reveal */
+.reveal{opacity:1;transform:none}
+.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.js .reveal.in{opacity:1;transform:none}.js .reveal[style*="--d"]{transition-delay:var(--d)}
+
+/* ===== calculadora ===== */
+.prob.naosei .pv{color:var(--ink-4);font-style:italic;font-weight:500}
+.prob.naosei .pt{color:var(--ink-3)}
+
+.calc{max-width:1000px;margin:0 auto}
+.calc-head{text-align:center;max-width:640px;margin:0 auto 44px}
+.calc-head h2{font-size:clamp(34px,5.4vw,58px)}.calc-head p{color:var(--ink-2);margin-top:16px}
+.calc-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:start}
+.panel{background:rgba(16,14,10,.97);border:1px solid var(--line);border-radius:7px;padding:30px 28px}
+.prob{padding:20px 0;border-bottom:1px solid rgba(198,154,62,.12)}.prob:first-child{padding-top:0}.prob:last-child{border-bottom:none;padding-bottom:0}
+.prob .ph{display:flex;justify-content:space-between;align-items:baseline;gap:14px}
+.prob .pt{font-family:var(--serif);font-size:18px;color:#FFFFFF;font-style:italic}
+.prob .pv{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--gold-hi);white-space:nowrap}
+.prob .pq{font-size:13.5px;color:var(--ink-2);margin:4px 0 13px;max-width:48ch}
+.prob input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:34px;border-radius:3px;background:transparent;background-image:linear-gradient(90deg,rgba(198,154,62,.2),rgba(198,154,62,.2));background-size:100% 3px;background-position:0 50%;background-repeat:no-repeat;outline:none;cursor:pointer;touch-action:none}
+/* o outline nativo do slider está removido na regra acima (o trilho é desenhado);
+   sem este anel a calculadora é operável por teclado e invisível para quem tabula */
+.prob input[type=range]:focus-visible{outline:2px solid var(--gold-hi);outline-offset:4px;border-radius:4px}
+.prob input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:var(--gold-hi);border:3px solid #EDE5DF;box-shadow:0 2px 12px rgba(242,210,122,.55);cursor:grab;transition:transform .2s var(--spring)}
+.prob input[type=range]::-webkit-slider-thumb:active{transform:scale(1.18)}
+.prob input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:var(--gold-hi);border:3px solid #EDE5DF}
+.prob .fix{margin-top:11px;font-family:var(--mono);font-size:12.5px;color:var(--gold-hi);display:none}
+.prob.on .fix{display:block;color:var(--gold-hi)}.prob.on .pt{color:var(--gold-hi)}
+.calc-out{position:sticky;top:90px;isolation:isolate}
+.calc-out::before{content:'';position:absolute;inset:-22px -24px;z-index:-1;border-radius:8px;background:radial-gradient(120% 130% at 40% 40%,rgba(12,10,8,.92),rgba(12,10,8,.74) 58%,rgba(12,10,8,.42) 100%)}
+.calc-out .oe{font-family:var(--mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-2);margin-bottom:10px}
+.calc-big{font-family:var(--serif);font-size:clamp(48px,7vw,72px);font-weight:600;color:var(--gold-hi);line-height:1;font-variant-numeric:tabular-nums;text-shadow:0 0 40px rgba(242,210,122,.25)}
+.calc-sub{margin-top:12px;font-family:var(--mono);font-size:13px;color:var(--ink-2)}.calc-sub b{color:var(--gold-hi);font-weight:500}
+.calc-bar{margin:20px 0;height:8px;border-radius:8px;background:rgba(198,154,62,.14);overflow:hidden}
+.calc-bar i{display:block;height:100%;width:100%;transform:scaleX(0);transform-origin:left center;background:linear-gradient(90deg,var(--gold-deep),var(--gold-hi));transition:transform .5s var(--ease);box-shadow:0 0 16px rgba(242,210,122,.5)}
+.calc-out .msg{margin-top:18px;font-size:15px;color:var(--ink);line-height:1.6}
+.calc-out .btn{margin-top:20px;width:100%;text-align:center}
+.calc-note{max-width:760px;margin:32px auto 0;text-align:center;font-size:13px;color:var(--ink-3);font-style:italic}
+
+/* método / casos / listas / oferta / faq (compactos) */
+.dtm{list-style:none;counter-reset:s;margin:36px 0 0}
+.dtm li{position:relative;padding:24px 0 24px 82px;border-top:1px solid var(--line)}.dtm li:first-child{border-top:none}
+.dtm li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:22px;font-family:var(--serif);font-size:36px;font-style:italic;color:var(--gold-hi)}
+.dtm h3{font-size:21px;font-weight:600;margin-bottom:5px}.dtm h3 .w{color:var(--gold-hi)}.dtm p{font-size:16px;margin:0}
+.case{padding:30px 0;border-top:1px solid var(--line)}.case:first-of-type{border-top:none}
+.case .n{font-family:var(--serif);font-size:clamp(30px,4vw,40px);font-weight:600;color:var(--gold-hi);font-style:italic;display:inline-block;margin-right:14px}
+.case .nm{font-family:var(--sans);font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#FDFCFA}
+.case p{font-size:16px;color:var(--ink-2);margin:10px 0 0}
+.note{font-size:14px;color:var(--ink-3);font-style:italic;margin-top:24px}
+.deliv{list-style:none;margin:4px 0 0}
+.deliv li{position:relative;padding:15px 0 15px 30px;border-bottom:1px solid var(--line);font-size:16.5px;color:var(--ink-2)}
+.deliv li:last-child{border-bottom:none}.deliv li::before{content:"";position:absolute;left:2px;top:22px;width:8px;height:8px;background:var(--gold);transform:rotate(45deg)}
+.deliv li b{color:#FFFFFF}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:44px}.cols ul{list-style:none}
+.cols li{position:relative;padding:11px 0 11px 26px;font-size:16px;color:var(--ink-2)}
+.cols .yes li::before{content:"";position:absolute;left:0;top:.92em;width:12px;height:1px;background:var(--gold-hi)}
+.cols .no li::before{content:"";position:absolute;left:0;top:.92em;width:12px;height:1px;background:var(--ink-3)}
+.cols h3{font-size:14px;font-weight:700;font-family:var(--sans);text-transform:uppercase;letter-spacing:.12em;margin-bottom:16px}
+.cols .yes h3{color:var(--gold-hi)}.cols .no h3{color:var(--ink-3)}
+.offer{background:rgba(20,17,13,.66);border:1px solid var(--line);border-radius:8px;padding:42px 40px}
+/* --- Quadro dos livros · oferta especial (19/08) --- */
+#livros .lv-books{display:flex;justify-content:center;align-items:flex-end;gap:clamp(14px,3vw,34px);margin:14px 0 42px;perspective:1400px}
+#livros .lv-book{position:relative;flex:0 1 auto;width:clamp(150px,26vw,244px);transform-style:preserve-3d;will-change:transform}
+#livros .lv-book img{display:block;width:100%;height:auto;border-radius:2px 5px 5px 2px;
+  box-shadow:0 26px 54px rgba(0,0,0,.62), 0 2px 0 rgba(198,154,62,.2), inset 0 0 0 1px rgba(255,255,255,.04)}
+#livros .lv-book::before{content:"";position:absolute;inset:0 auto 0 0;width:9px;border-radius:2px 0 0 2px;
+  background:linear-gradient(90deg,rgba(0,0,0,.62),rgba(255,255,255,.07) 60%,transparent);pointer-events:none}
+#livros .lv-book::after{content:"";position:absolute;left:6%;right:6%;bottom:-16px;height:16px;border-radius:50%;
+  background:radial-gradient(ellipse at center,rgba(198,154,62,.2),transparent 72%);filter:blur(5px);pointer-events:none}
+#livros .lv-b1{transform:rotateY(9deg) translateZ(0)}
+#livros .lv-b2{width:clamp(120px,21vw,196px);transform:rotateY(-7deg) translateY(16px)}
+#livros .lv-cap{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);text-align:center;margin:16px 0 0}
+/* entrada: os livros se assentam, um depois do outro */
+.js #livros .lv-book{opacity:0;transform:translateY(34px) rotateY(0deg) scale(.965);transition:opacity .9s var(--ease),transform 1.1s var(--spring)}
+.js #livros .lv-book.in.lv-b1{opacity:1;transform:translateY(0) rotateY(9deg) scale(1)}
+.js #livros .lv-book.in.lv-b2{opacity:1;transform:translateY(16px) rotateY(-7deg) scale(1);transition-delay:.16s}
+/* o brilho que atravessa a capa quando ela assenta */
+#livros .lv-book .sheen{position:absolute;inset:0;border-radius:2px 5px 5px 2px;overflow:hidden;pointer-events:none}
+#livros .lv-book .sheen::after{content:"";position:absolute;top:-60%;left:-140%;width:70%;height:220%;
+  background:linear-gradient(100deg,transparent,rgba(242,210,122,.16),rgba(255,255,255,.1),transparent);transform:rotate(14deg)}
+.js #livros .lv-book.in .sheen::after{animation:lvSheen 1.5s var(--ease) .5s 1 both}
+@keyframes lvSheen{to{left:150%}}
+#livros .lv-grid{display:grid;gap:20px}
+@media(min-width:760px){#livros .lv-grid{grid-template-columns:1fr 1fr}}
+#livros .lv-card{background:rgba(20,17,13,.66);border:1px solid var(--line);border-left:2px solid var(--gold);border-radius:8px;padding:28px 26px}
+#livros .lv-tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin:0 0 12px}
+#livros .lv-t{font-family:var(--serif);font-size:26px;line-height:1.15;color:#FFFFFF;margin:0 0 4px}
+#livros .lv-s{font-size:15px;color:var(--ink-3);margin:0 0 18px}
+#livros .lv-l{list-style:none;margin:0;padding:0;font-size:15.5px;color:var(--ink-2)}
+#livros .lv-l li{padding:9px 0 9px 20px;border-bottom:1px solid rgba(198,154,62,.12);position:relative}
+#livros .lv-l li:last-child{border-bottom:none}
+#livros .lv-l li::before{content:"";position:absolute;left:0;top:17px;width:7px;height:1px;background:var(--gold)}
+#livros .lv-l b{color:#FFFFFF;font-weight:600}
+#livros .lv-quote{font-family:var(--serif);font-size:17px;line-height:1.5;color:var(--gold-hi);border-left:2px solid var(--gold);padding-left:16px;margin:18px 0 0}
+#livros .lv-honest{margin:34px 0 0;font-size:14.5px;line-height:1.62;color:var(--ink-3)}
+#livros .lv-close{font-family:var(--serif);font-size:19px;color:#FFFFFF;margin:26px 0 0}
+.motion #livros .lv-book.in img{animation:lvGlow 4.5s ease-in-out infinite alternate}
+@keyframes lvGlow{from{box-shadow:0 26px 54px rgba(0,0,0,.62),0 0 0 rgba(242,210,122,0)}to{box-shadow:0 26px 60px rgba(0,0,0,.6),0 0 42px rgba(242,210,122,.34)}}
+.motion #livros .lv-book.in:hover{transform:translateY(-8px) rotateY(4deg) scale(1.03);transition:transform .5s var(--spring)}
+.motion #livros .lv-book.in:hover .sheen::after{animation:lvSheen 1.1s var(--ease) 0s 1 both}
+@media(prefers-reduced-motion:reduce){.js #livros .lv-book{opacity:1;transform:none;transition:none}.motion #livros .lv-book.in img{animation:none}.js #livros .lv-book.in.lv-b1,.js #livros .lv-book.in.lv-b2{transform:none;transition:none}.js #livros .lv-book.in .sheen::after{animation:none}}
+.stack{width:100%;border-collapse:collapse;font-size:16px}
+.stack td{padding:14px 4px;border-bottom:1px solid var(--line);color:var(--ink-2)}.stack td.v{text-align:right;font-family:var(--mono);font-size:14px;color:var(--ink-3);white-space:nowrap}
+.stack tr.tot td{border-top:1px solid var(--gold);border-bottom:none;padding-top:20px;color:#FFFFFF;font-weight:600}.stack tr.tot td.v{color:var(--ink-3);text-decoration:line-through}
+.stack tr.price td{border-bottom:none;padding-top:12px}.stack tr.price .lab{font-family:var(--serif);font-size:21px;color:#FFFFFF}.stack tr.price .v{font-family:var(--serif);font-size:46px;color:var(--gold-hi);font-weight:600}
+.guar{border:1px solid var(--gold);border-radius:6px;padding:40px 38px;background:rgba(20,17,13,.5)}
+/* --- order bump: anuncia a caixinha do checkout (Bump 1 da oferta.md) --- */
+.bump{margin-top:26px;border:1px dashed var(--gold);border-radius:6px;padding:26px 28px;background:var(--gold-bg)}
+.bump-tag{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-hi);margin-bottom:12px}
+.bump-grid{display:grid;grid-template-columns:1fr auto;gap:22px;align-items:center}
+.bump-name{font-family:var(--serif);font-size:clamp(19px,2vw,24px);color:var(--ink);margin-bottom:8px}
+.bump-p{font-size:14.5px;line-height:1.6;color:var(--ink-2);margin:0;max-width:56ch}
+.bump-price{text-align:right;white-space:nowrap}
+.bump-price b{display:block;font-family:var(--serif);font-size:clamp(24px,2.6vw,34px);color:var(--gold-hi)}
+.bump-price span{display:block;margin-top:6px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--ink-3)}
+@media(max-width:640px){.bump-grid{grid-template-columns:1fr}.bump-price{text-align:left}}
+.guar .gtag{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--gold);margin-bottom:12px}
+.guar .gt{font-family:var(--serif);font-size:23px;color:#FFFFFF;font-weight:600;margin-bottom:12px;font-style:italic}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:22px 40px 22px 0;position:relative;font-family:var(--serif);font-size:19px;color:#FFFFFF;font-weight:500}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:4px;top:31px;width:12px;height:1px;background:var(--gold)}
+.faq summary::before{content:"";position:absolute;right:9px;top:26px;width:1px;height:12px;background:var(--gold);transition:transform .35s var(--ease)}
+.faq details[open] summary::before{transform:scaleY(0)}
+.faq .ans{padding:0 0 24px;font-size:16px;color:var(--ink-2);max-width:62ch}
+.close{text-align:center}.close h2{font-size:clamp(44px,6.6vw,74px);line-height:1}
+.foot{margin-top:70px;padding-top:36px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-2);text-align:center;max-width:66ch;margin-left:auto;margin-right:auto}
+.foot a{color:inherit;text-decoration:underline}
+
+@media(max-width:900px){
+  .calc-grid{grid-template-columns:1fr;gap:20px}.calc-out{position:relative}
+  .duo{grid-template-columns:1fr;gap:34px}.duo.rev{direction:ltr}
+  .cols{grid-template-columns:1fr;gap:28px}
+}
+@media(max-width:720px){section{padding:var(--sec-pad) 22px}.hero{min-height:94svh}.bowl-base{background-position:center 34%}.hero .hveil{background:linear-gradient(180deg,rgba(11,10,8,.1),rgba(11,10,8,.6) 60%,var(--bg))}.hero .hc{margin:0}.dtm li{padding-left:62px}.btn{padding:18px 30px;font-size:13px}}
+.hero-cap::before{content:'';position:absolute;inset:-14px -22px -18px -22px;z-index:-1;border-radius:4px;background:radial-gradient(120% 140% at 30% 60%,rgba(11,10,8,.92),rgba(11,10,8,.72) 55%,rgba(11,10,8,0) 100%)}
+.hero-cap{position:absolute;left:clamp(20px,4vw,54px);bottom:26px;z-index:3;isolation:isolate;font-family:var(--serif);font-style:italic;font-size:clamp(13px,1.4vw,16px);color:var(--gold-hi);text-shadow:0 1px 3px rgba(11,10,8,1),0 2px 18px rgba(11,10,8,.98),0 0 6px rgba(11,10,8,.95);max-width:34ch;pointer-events:none}
+@media(max-width:820px){.hero-cap{display:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .reveal,.js .shard{opacity:1;transform:none;transition:none}.js .shard .seam path{stroke-dashoffset:0}.bowl-base{filter:saturate(1) brightness(1)}#reveal{display:none}.surf-gold{-webkit-mask-image:none;mask-image:none}}
+
+
+/* ===== HERO CINE ===== */
+html{overscroll-behavior-y:none;background:#F6F3F1}
+body{overscroll-behavior-y:none}
+section.hero.cineh{padding:0!important;min-height:0;height:auto;display:block;overflow:visible}
+.js .cineh.cine-on{height:1400svh}
+.cineh .palco{position:relative;height:100svh;overflow:hidden;background:var(--bg)}
+.js .cineh.cine-on .palco{position:sticky;top:0}
+.cineh .palco::after{content:'';position:absolute;left:0;right:0;bottom:0;height:170px;z-index:2;pointer-events:none;background:linear-gradient(180deg,rgba(11,10,8,0),rgba(11,10,8,.5) 60%,var(--bg))}
+.cineh .cstage{position:absolute;inset:0;background:var(--bg)}
+.cineh .cposter,.cineh #filmeCv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:right 60%}
+.cineh #filmeCv{display:none}
+.js .cineh.cine-on #filmeCv{display:block}
+.js .cineh.cine-on.painted .cposter{display:none}
+/* o degradê mora na METADE DIREITA — nunca sobre o funil */
+.cineh .hveil{position:absolute;inset:0;pointer-events:none;background:none}
+.cineh .hin{position:absolute;inset:0;display:flex;align-items:center;z-index:3;pointer-events:none;max-width:none;margin:0;padding:0}
+/* DISTÂNCIA ESPACIAL (auditoria 28/08). O filme é ancorado à ESQUERDA e escala
+   pela ALTURA; a coluna de texto era ancorada à BORDA DIREITA e escala pela
+   LARGURA. Resultado medido: a 1024px a frase encosta na peça (60px de vão) e a
+   1440px ela foge para 216px — quanto mais larga a tela, mais longe a frase fica
+   da ação. O margin-right abaixo prende a coluna ao FILME (70vh + 60px do lado
+   esquerdo dela) e só age quando sobra tela; abaixo de ~1200px é zero e nada
+   muda. */
+.cineh .hc{--colw:min(640px,44vw);margin-left:auto;width:var(--colw);max-width:none;padding-right:clamp(40px,6vw,96px)}
+@media(min-width:821px){.cineh .hc{margin-right:max(0px,calc((100% - var(--colw) - 70vh - 60px)/2))}}
+.cineh .cseq{position:relative;min-height:60svh;display:flex;align-items:center}
+/* fade de 0,28s (contrato ux-do-scroll §3.1b): a 0,5s o piso de platô exigia
+   ~55svh por janela e várias janelas ficavam abaixo dele — passagem, não platô */
+.cineh .seqi{position:absolute;left:0;right:0;top:50%;transform:translateY(calc(-50% + 18px));opacity:0;transition:opacity .28s var(--ease),transform .6s var(--ease);pointer-events:none}
+.cineh .seqi.on{opacity:1;transform:translateY(-50%)}
+.cineh .seqi.past{opacity:0;transform:translateY(calc(-50% - 18px))}
+/* véu MUITO leve atrás do texto da coluna (legibilidade sobre o ouro), nunca sobre o filme inteiro */
+.cineh .hc .seqi{isolation:isolate}
+.cineh .hc .seqi::before{content:'';position:absolute;inset:-56px -70px;z-index:-1;background:radial-gradient(ellipse 62% 68% at 50% 50%,rgba(11,10,8,.36),rgba(11,10,8,.14) 46%,rgba(11,10,8,0) 74%)}
+.cineh h1{font-size:clamp(44px,5.4vw,76px);line-height:1;letter-spacing:-.03em;color:#FFFFFF}
+.cineh .sub{font-size:clamp(16.5px,1.4vw,19px);color:var(--ink);line-height:1.62;max-width:46ch;margin-top:24px}
+.cineh .sq-fala p{font-family:var(--serif);font-style:italic;font-size:clamp(24px,2.6vw,36px);line-height:1.3;color:var(--ink);max-width:24ch;text-shadow:0 1px 16px rgba(11,10,8,.85)}
+.cineh .sq-trava h3{font-family:var(--serif);font-weight:500;font-size:clamp(28px,3vw,44px);line-height:1.16;letter-spacing:-.01em;color:#FFFFFF;text-shadow:0 1px 16px rgba(11,10,8,.85)}
+/* PRESENÇA das 7 travas (auditoria 28/08). Elas já eram MAIORES que as falas em
+   corpo (44px × 36px) e mesmo assim pesavam menos na tela: as falas ocupam duas
+   linhas de citação e quatro das travas são uma linha curta e solta. O
+   filete de ouro é o mesmo gesto que abre o H1 (.rule.hrule) e fecha as frases
+   do expert (.sq-expert::after) — dá massa e marca as travas como série, sem
+   aumentar corpo nenhum. */
+.cineh .sq-trava h3::before{content:'';display:block;width:34px;height:1px;margin-bottom:20px;background:linear-gradient(90deg,var(--gold-deep),var(--gold-hi));box-shadow:0 0 10px rgba(242,210,122,.35)}
+.cineh .sq-trava .w{font-style:italic;color:var(--gold-hi)}
+/* a linha de apoio saiu de --ink-3 (#756860) para --ink-2 (#43403C): mono 13px em
+   caixa alta e espaçada é justo o texto que some sobre o filme, e o contraste
+   sobre a base #F6F3F1 sobe de ~4,6:1 para ~9:1 */
+.cineh .sq-trava p{margin-top:12px;font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+/* as frases CENTRAIS: a big idea e a resposta do expert — palco inteiro, parada longa */
+.cineh .cmid{position:absolute;inset:0;z-index:4;display:flex;align-items:center;justify-content:center;pointer-events:none;text-align:center}
+.cineh .cmid .seqi{left:8%;right:8%;isolation:isolate}
+.cineh .cmid .seqi::before{content:'';position:absolute;inset:-110px -14%;z-index:-1;background:radial-gradient(ellipse 48% 55% at 50% 50%,rgba(11,10,8,.46),rgba(11,10,8,.18) 44%,rgba(11,10,8,0) 72%)}
+.cineh .sq-solo p{font-family:var(--serif);font-style:italic;font-size:clamp(34px,4.4vw,64px);line-height:1.2;color:#FFFFFF;text-shadow:0 2px 22px rgba(11,10,8,.9)}
+.cineh .sq-expert::after{content:'';display:block;width:64px;height:2px;background:linear-gradient(90deg,var(--gold-deep),var(--gold-hi));margin:26px auto 0;box-shadow:0 0 12px rgba(242,210,122,.5)}
+.cineh .sq-expert p{font-family:var(--serif);font-style:normal;font-weight:600;font-size:clamp(32px,4vw,58px);line-height:1.16;letter-spacing:-.01em;color:var(--gold-hi);text-shadow:0 2px 26px rgba(11,10,8,.95)}
+.cineh .sq-expert em{font-style:italic;color:#FFFFFF}
+.cineh .sq-fecho .fk{font-family:var(--serif);font-size:clamp(20px,1.9vw,28px);line-height:1.15;color:var(--ink);white-space:nowrap;font-variant-numeric:lining-nums}
+.cineh .sq-fecho .ftap{margin-top:8px;font-family:var(--serif);font-size:clamp(40px,4.6vw,66px);line-height:1.02;letter-spacing:-.02em;color:#FFFFFF}
+.cineh .sq-fecho .ftap em{font-style:italic;color:var(--gold-hi)}
+/* SAÍDA do ato (ux-do-scroll §4): área de toque de 44px e fora da barra de
+   gestos do iPhone. O sublinhado fica no <span>, senão a borda acompanha a
+   caixa de 44px e vira um risco solto no meio do palco. */
+.cineh .cskip{position:absolute;left:clamp(12px,4vw,46px);bottom:calc(8px + env(safe-area-inset-bottom));z-index:5;display:inline-flex;align-items:center;min-height:44px;padding:0 8px;font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);text-decoration:none;touch-action:manipulation}
+.cineh .cskip span{border-bottom:1px solid rgba(198,154,62,.35);padding-bottom:3px}
+.cineh .cskip:hover{color:var(--gold-hi)}
+.cineh .cskip:focus-visible{outline:2px solid var(--gold-hi);outline-offset:4px;border-radius:2px;color:var(--gold-hi)}
+/* marca de progresso do ato — o terceiro sinal, ao lado do convite e da saída */
+.cineh .cprog{position:absolute;left:0;right:0;bottom:0;height:2px;z-index:6;background:var(--line);pointer-events:none;opacity:0;transition:opacity .8s var(--ease)}
+.js .cineh.cine-on .cprog{opacity:1}
+.cineh .cprogf{height:100%;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--gold);box-shadow:0 0 10px rgba(198,154,62,.5)}
+.no-cine .cineh .cprog{display:none}
+/* MOVIMENTO REDUZIDO termina no OURO (contrato §5: o frame FINAL, não o inicial).
+   O <picture> troca o pôster do quadro inicial pelo still do quadro final —
+   que é o frame MAIS CLARO do filme. Sem véu próprio, o H1 cai em cima do veio de
+   ouro e some. Este degradê é o equivalente CSS do que o canvas pinta no ato. */
+.no-cine .cineh .hveil{background:linear-gradient(270deg,rgba(11,10,8,0) 0%,rgba(11,10,8,.1) 24%,rgba(11,10,8,.42) 38%,rgba(11,10,8,.72) 48%,rgba(11,10,8,.88) 58%,rgba(11,10,8,.94) 72%,rgba(11,10,8,.96) 100%),linear-gradient(180deg,rgba(11,10,8,.5) 0%,rgba(11,10,8,0) 22%,rgba(11,10,8,0) 74%,rgba(11,10,8,.62) 100%)}
+@media(max-width:820px){.no-cine .cineh .hveil{background:linear-gradient(180deg,rgba(11,10,8,.55) 0%,rgba(11,10,8,.6) 20%,rgba(11,10,8,.82) 44%,rgba(11,10,8,.93) 62%,var(--bg) 88%)}}
+.no-cine .cineh .seqi{position:relative;top:auto;transform:none;opacity:0;display:none}
+.no-cine .cineh #sqAbre,.no-cine .cineh .sq-fecho{display:block;opacity:1;position:relative;pointer-events:auto}
+.no-cine .cineh .cmid{display:none}
+.js .cineh .cposter{display:none}
+.js.no-cine .cineh .cposter{display:block}
+.no-cine .cineh .cseq{display:block}
+.no-cine .cineh .sq-fecho{margin-top:44px}
+@media(max-width:820px){
+  .cineh .hin{align-items:flex-end;padding-bottom:22svh}
+  .cineh .hc{width:100%;padding:0 22px}
+  .cineh h1{font-size:clamp(38px,10vw,52px)}
+  .cineh .hveil{background:linear-gradient(180deg,rgba(11,10,8,0) 0%,rgba(11,10,8,0) 42%,rgba(11,10,8,.62) 66%,var(--bg) 92%)}
+  .cineh .cposter,.cineh #filmeCv{object-position:center 62%}
+  .cineh .cseq{min-height:46svh}
+  .cineh .sq-fecho .fk{white-space:normal}
+}
+@media(max-width:820px){
+.js .cineh.cine-on{height:1300svh}
+.cineh .palco{height:100dvh}
+.cineh .sq-fala p{font-size:clamp(20px,5.8vw,26px)}
+.cineh .sq-trava h3{font-size:clamp(22px,6.6vw,30px)}
+.cineh .sq-solo p{font-size:clamp(26px,7.4vw,38px)}
+.cineh .sq-expert p{font-size:clamp(24px,6.8vw,34px)}
+.cineh .sq-fecho .ftap{font-size:clamp(32px,9vw,46px)}
+}
+
+/* FECHO · a peça inteira (o depois) - SEGUNDO HERÓI: mesmo reveal, imagem+copy lado a lado */
+.finale2 .bowl-base{background:var(--bg) url('assets/l01/surreal/ampulheta_cheia.jpg') center/cover no-repeat;filter:saturate(.7) brightness(.6) contrast(1.06)}
+#finaleReveal{position:absolute;inset:0;width:100%;height:100%}
+.finale2{background:var(--bg)}
+.finale2 .stage{background:var(--bg)}
+.finale2 .hveil{background:linear-gradient(90deg,rgba(11,10,8,0) 0%,rgba(11,10,8,0) 50%,rgba(11,10,8,.12) 56%,rgba(11,10,8,.3) 61%,rgba(11,10,8,.52) 65%,rgba(11,10,8,.72) 69%,rgba(11,10,8,.87) 72%,rgba(11,10,8,.96) 75%,var(--bg) 78%,var(--bg) 100%),linear-gradient(180deg,var(--bg) 0%,rgba(11,10,8,.55) 7%,rgba(11,10,8,0) 16%,rgba(11,10,8,0) 78%,var(--bg) 100%)}
+@media(min-width:721px){.finale2 .hin{max-width:none;padding:0 clamp(24px,4vw,56px)}.finale2 .hc{max-width:460px}}
+@media(max-width:720px){.finale2 .bowl-base{background-position:57% 92%;background-size:auto 150%;filter:saturate(.85) brightness(.7) contrast(1.05)}.finale2 .hveil{background:linear-gradient(180deg,rgba(11,10,8,.3) 0%,rgba(11,10,8,.5) 26%,rgba(11,10,8,.84) 44%,var(--bg) 58%,var(--bg) 100%)}}
+.finale2 .under{color:var(--ink-2)}
+.finale2 .hint{color:var(--ink)}
+.finale2 .foot{color:var(--ink)}
+.finale2 .foot{color:var(--ink-2);font-size:12.5px;margin-top:30px}
+.finale2 .fh{font-size:clamp(40px,6vw,80px);line-height:1;letter-spacing:-.02em;color:#FFFFFF}
+.finale2 .fh em{font-style:italic;color:var(--gold-hi)}
+.finale2 .recap2{font-family:var(--mono);font-size:12.5px;letter-spacing:.02em;color:var(--ink);margin:16px 0 0;max-width:52ch}
+/* scrim proprio: os tres blocos de texto do fecho ficam sobre a parte clara da
+   parte clara do quadro final, onde so a cor nunca chega a 4.5:1. Mesmo padrao do .hero-cap. */
+.finale2 .hc,.finale2 .foot,.finale2 .hint{position:relative;isolation:isolate}
+.finale2 .hc::before,.finale2 .foot::before,.finale2 .hint::before{content:'';position:absolute;inset:-70px -110px;z-index:-1;background:radial-gradient(100% 100% at 50% 50%,rgba(11,10,8,.72) 0%,rgba(11,10,8,.45) 30%,rgba(11,10,8,0) 49%)}
+.finale2 .foot{pointer-events:auto;margin-top:22px;text-align:left;max-width:52ch}
+.finale2 .foot a{pointer-events:auto}
+@media(prefers-reduced-motion:reduce){.finale2 .bowl-base{filter:saturate(.8) brightness(.92)}#finaleReveal{display:none}}
+
+/* ===== telas baixas: precisa ficar no FIM da cascata. Mesma especificidade
+   perde para quem vem depois, e a regra base de .finale2 .fh mora adiante. ===== */
+@media(min-width:721px) and (max-height:800px){
+  .hero{padding:clamp(72px,9vh,104px) 0 clamp(48px,6vh,72px)}
+  .hero h1{font-size:clamp(42px,5.6vw,68px)}
+  .hero .sub{margin-top:18px;font-size:clamp(16px,1.3vw,18px)}
+  .hbul{margin-top:18px;gap:8px}.hbul li{font-size:14.5px}
+  .hero .cta-area{margin-top:22px}.hero .hint{margin-top:16px}
+  /* O FECHO tambem e .hero (section class="hero finale2"), entao o padding acima
+     ja o alcanca. A headline dele nao: e .fh, um h2, e ficava fora da regra que
+     mira .hero h1. Resultado medido: em 1366x768 a barra fixa cobria 48% dela. */
+  .finale2 .fh{font-size:clamp(34px,4.6vw,58px)}
+  .finale2 .recap2{margin-top:12px;font-size:12.5px}
+  .finale2 .foot{margin-top:16px;font-size:12.5px}
+}
+</style>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+<script>try{var _c=navigator.connection||{},_m=matchMedia('(max-width:820px)').matches||_c.saveData||/2g|3g/.test(_c.effectiveType||''),_t=_m?'mobile':'desktop';if(!matchMedia('(prefers-reduced-motion:reduce)').matches){fetch('assets/filme/'+_t+'/index.json');fetch('assets/filme/'+_t+'/t1_1.bin');}}catch(e){}</script>
+<link rel="preload" href="assets/filme/desktop/poster.webp" as="image" fetchpriority="high">
+<style>
+/* hero-filme do iPad de Ouro (02/09): placa LARGA 21:9 com mesa vazia à esquerda; iPad em 46% da tela; coluna de texto à esquerda sobre a pedra, só um véu leve para legibilidade */
+.cineh .hc{--colw:min(500px,34vw);margin-left:var(--hc-left,8vw)!important;margin-right:auto!important;padding:0;box-sizing:content-box}
+.cineh h1{font-size:clamp(36px,3.9vw,56px)}
+.cineh .sq-fala p{max-width:22ch}
+.cineh .sq-fecho .ftap{font-size:clamp(34px,3.6vw,54px)}
+.cineh .sq-fecho .note,.cineh #sqAbre .note{font-size:13.5px;color:var(--ink-3);margin:12px 0 0;max-width:36ch}
+@media(max-width:820px){.cineh .hc{--colw:100%;padding:0 20px}}
+</style>
+</head>
+<body>
+<div class="surf"></div><div class="surf-gold" id="surfGold"></div><div class="veil"></div>
+<svg width="0" height="0" style="position:absolute"><defs><linearGradient id="goldSeam" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B38A25"/><stop offset=".5" stop-color="#F2D990"/><stop offset="1" stop-color="#C9A742"/></linearGradient></defs></svg>
+
+<header class="bar" id="bar"><span class="bm">Infocontabilidade <span>Lucro à Vista</span></span><span style="display:inline-flex;align-items:center;gap:14px"><span class="bm" id="barLoss" style="font-size:14px"></span><a class="blink" href="#oferta" data-cta="bar" id="barCta">Ver a oferta</a></span></header>
+
+<main>
+<!-- HERO CINE · o filme "O Ouro é Luz" integrado por degradê -->
+<section class="hero cineh" id="topo" aria-label="O ato de abertura: um iPad sobre a mesa mostra a hora do financeiro, o painel do mês passado e o painel deste mês, conforme você rola. Todo o texto do ato está abaixo, em HTML.">
+  <div class="palco">
+    <div class="cstage"><picture><source media="(prefers-reduced-motion: reduce)" srcset="assets/filme/desktop/poster_final.webp"><img class="cposter" src="assets/filme/desktop/poster.webp" alt="" aria-hidden="true"></picture><canvas id="filmeCv" aria-hidden="true" role="presentation"></canvas></div>
+    <div class="hveil"></div>
+    <div class="hin"><div class="hc">
+      <div class="cseq" id="cseq">
+        <div class="seqi on" data-a="0" data-b="0.11" id="sqAbre">
+          <div class="rule hrule"></div>
+          <h1>Toda sexta, às oito,<br><em>o dinheiro se explica</em>.</h1>
+          <p class="sub">A Vanessa faz a dela toda sexta, das oito às nove. Role devagar: a tela mostra o que ela olha nessa hora, e por quais paradas o dinheiro passa antes de chegar na última linha. O imposto é uma delas.</p>
+          <div class="hint" style="margin-top:26px"><span class="dot"></span>role devagar para ver a hora acontecer</div>
+        </div>
+        <div class="seqi sq-fala" data-a="0.13" data-b="0.33"><p>Antes de gravar, antes de atender: uma hora com o dinheiro.</p></div>
+        <div class="seqi sq-fala" data-a="0.46" data-b="0.58"><p>Entrou o mês inteiro. O que ficou é essa faixa fina.</p></div>
+        <div class="seqi sq-fala" data-a="0.70" data-b="0.85"><p>O mesmo faturamento, lido linha por linha. Agora dá para decidir.</p></div>
+        <div class="seqi sq-fecho" data-a="0.87" data-b="1"><p class="ftap">Uma hora por semana, <em>na sua mão</em>.<br>O lucro à vista.</p>
+          <div class="cta-area" style="margin-top:28px;pointer-events:auto"><a class="btn" href="#calculadora" data-cta="hero">Quero ver para onde vai o meu dinheiro</a><p class="note">O botão abre a calculadora desta página. Você vê o seu número antes de decidir qualquer coisa.</p></div>
+        </div>
+      </div>
+    </div></div>
+    <div class="cprog" aria-hidden="true"><div class="cprogf"></div></div>
+    <a class="cskip" href="#dor"><span>pular para a página ↓</span></a>
+  </div>
+</section>
+
+<!-- DOR + caco 1 (o problema) -->
+<section id="dor">
+  <p class="note" style="text-align:center;margin:0 auto 34px;max-width:64ch;padding:0 20px">Cenário ilustrativo. Os números da tela existem para explicar a leitura, não são resultado de aluno nem previsão para o seu negócio. O curso entrega as seis aulas e a planilha Raio-X do Lucro.</p>
+  <div class="duo">
+    <div class="reveal">
+      <div class="label">Por onde o dinheiro sai</div>
+      <h2 style="font-size:clamp(30px,4.4vw,48px)">O faturamento entra. O lucro escapa no caminho.</h2>
+      <div class="rule"></div>
+      <p class="lead">O mês fecha faturando bem. Aí você olha o que sobrou, e não está lá.</p>
+      <p>O dinheiro não some na sua planilha nem no imposto. Some antes, no percurso entre a venda e a sua conta, onde ele para seis vezes e ninguém anota. O curso abre essas seis paradas, uma a uma, e mostra quanto fica em cada uma.</p>
+      <p class="pull">Você sabe que sobra pouco. <span class="hl">Só não sabe por onde.</span></p>
+    </div>
+    <figure class="shard s1"><img loading="lazy" src="assets/l01/surreal/ampulheta_moedas.jpg" alt="O dinheiro no escuro"><svg class="seam" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M5 0 L100 7 L95 100 L0 90 Z"/></svg><span class="cap">O percurso</span></figure>
+  </div>
+</section>
+
+<!-- CALCULADORA -->
+<section class="cap" id="calculadora">
+  <div class="calc">
+    <div class="calc-head">
+      <div class="label center" style="justify-content:center">A conta que decide tudo</div>
+      <h2 class="reveal" style="--d:.05s">Quanto <em>sobrou</em><br>no seu último mês?</h2>
+      <p class="reveal" style="--d:.1s">Sete campos. Se você souber os sete, a conta fecha em dez segundos e você
+      vê a sua margem. Se não souber, <strong>é essa a resposta</strong> — e ela vale mais que qualquer número.</p>
+    </div>
+    <div class="calc-grid">
+      <div class="panel reveal" id="probs">
+        <div class="prob" data-k="fat" data-tipo="receita"><div class="ph"><span class="pt">O seu faturamento do mês</span><span class="pv" data-pv>Não sei</span></div><div class="pq">Tudo o que entrou pelas vendas, antes de qualquer desconto.</div><input type="range" aria-label="O seu faturamento do mês" min="-1000" max="200000" step="1000" value="-1000"></div>
+        <div class="prob" data-k="plat" data-tipo="custo"><div class="ph"><span class="pt">A taxa da plataforma</span><span class="pv" data-pv>Não sei</span></div><div class="pq">O que a plataforma reteve em cada venda, no mês.</div><input type="range" aria-label="A taxa da plataforma" min="-500" max="40000" step="500" value="-500"></div>
+        <div class="prob" data-k="afil" data-tipo="custo"><div class="ph"><span class="pt">A comissão do afiliado</span><span class="pv" data-pv>Não sei</span></div><div class="pq">O que afiliados e coprodutores levaram, no mês.</div><input type="range" aria-label="A comissão do afiliado" min="-500" max="60000" step="500" value="-500"></div>
+        <div class="prob" data-k="imp" data-tipo="custo"><div class="ph"><span class="pt">A guia do imposto</span><span class="pv" data-pv>Não sei</span></div><div class="pq">O imposto que nasceu junto com as vendas do mês.</div><input type="range" aria-label="A guia do imposto" min="-500" max="30000" step="500" value="-500"></div>
+        <div class="prob" data-k="traf" data-tipo="custo"><div class="ph"><span class="pt">O tráfego</span><span class="pv" data-pv>Não sei</span></div><div class="pq">O que saiu em anúncio no mês, antes de a venda entrar.</div><input type="range" aria-label="O tráfego" min="-500" max="50000" step="500" value="-500"></div>
+        <div class="prob" data-k="fix" data-tipo="custo"><div class="ph"><span class="pt">Os custos fixos</span><span class="pv" data-pv>Não sei</span></div><div class="pq">Ferramenta, equipe e assinatura — rodam mesmo no mês fraco.</div><input type="range" aria-label="Os custos fixos" min="-500" max="40000" step="500" value="-500"></div>
+        <div class="prob" data-k="ret" data-tipo="custo"><div class="ph"><span class="pt">A sua retirada</span><span class="pv" data-pv>Não sei</span></div><div class="pq">O que você tirou para você no mês. Sem boleto e sem data.</div><input type="range" aria-label="A sua retirada" min="-500" max="40000" step="500" value="-500"></div>
+        <p style="margin:18px 0 0;font-size:13.5px;font-style:italic;color:var(--ink-3)">Cada campo começa
+        em <strong>“Não sei”</strong>. Deixe assim o que você realmente não sabe — é essa a foto do problema.</p>
+      </div>
+      <div class="calc-out reveal" style="--d:.08s">
+        <div class="oe" id="calcEyebrow">O que sobrou no mês</div>
+        <div class="calc-big"><span id="calcTotal">?</span></div>
+        <div class="calc-sub" id="calcSub">sete campos em “Não sei”</div>
+        <div class="calc-bar"><i id="calcBar"></i></div>
+        <div class="msg" id="calcMsg">Enquanto essa conta não fecha, toda decisão do seu negócio — preço,
+        corte, contratação, retirada — é chute.</div>
+        <a class="btn" href="#oferta" data-cta="calculadora">Quero fechar essa conta · R$ 97</a>
+      </div>
+    </div>
+    <p class="calc-note reveal">Esta conta é a margem do seu mês, não uma promessa. Nada aqui estima ganho nem
+    prevê resultado: o número que vale é o do seu mês, e ele aparece quando você o preenche no Raio-X do Lucro.</p>
+  </div>
+</section>
+
+<!-- MÉTODO -->
+<section>
+  <div class="wrap">
+    <div class="label reveal">O método</div>
+    <h2 class="reveal" style="--d:.05s;font-size:clamp(30px,4.6vw,50px)">Você enxerga o percurso. Depois lê a linha que responde.</h2>
+    <div class="rule reveal"></div>
+    <p class="reveal">O <strong>Lucro à Vista</strong> são 6 aulas gravadas, curtas, com acesso integral desde a compra. Elas não montam um cronograma: montam a sua rotina financeira. A Vanessa faz a dela toda sexta-feira, das 8 às 9 da manhã, e é essa rotina que você sai sabendo montar — de 15 minutos a 1 hora por semana. Cada aula aponta uma parada do dinheiro, mostra onde ela aparece no seu extrato e entrega a etapa do método que a resolve.</p>
+    <ol class="dtm reveal">
+      <li><h3><span class="w">O seu mês aberto.</span></h3><p>A aula não é para assistir de braços cruzados: você abre o extrato do último mês do lado e pausa quando precisar preencher.</p></li>
+      <li><h3><span class="w">A parada nomeada.</span></h3><p>Cada aula aponta uma parada do dinheiro e mostra onde ela aparece no seu extrato.</p></li>
+      <li><h3><span class="w">O instrumento em uso.</span></h3><p>O Raio-X do Lucro preenchido na tela, com um mês real, antes de você preencher o seu.</p></li>
+      <li><h3><span class="w">A etapa com ponto de chegada.</span></h3><p>Cada etapa tem um critério de conclusão. Você sabe quando terminou, e de onde recomeçar na semana em que empurrar a sexta-feira.</p></li>
+      <li><h3><span class="w">A próxima parada.</span></h3><p>A aula termina apontando a parada seguinte. Seis aulas, até a última linha.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ENTREGÁVEIS - as ferramentas reais, como cacos-documento dourados -->
+<section class="cont">
+  <div class="wrap" style="max-width:960px">
+    <div class="label reveal">O que você recebe</div>
+    <h2 class="reveal" style="--d:.05s;font-size:clamp(30px,4.6vw,50px)">Seis aulas, dois instrumentos.<br>Mais o seu mês na tela.</h2>
+    <div class="rule reveal"></div>
+    <p class="reveal" style="max-width:60ch">São as peças que acendem o percurso: cada parada do diagnóstico vem com a etapa que a nomeia. Você preenche com os seus dados e lê no mesmo dia.</p>
+    <p class="reveal" style="--d:.1s;margin-top:12px;font-size:15.5px;color:var(--gold)">Passe o mouse em cada uma (ou toque) e veja o que ela mostra.</p>
+    <div class="tools-grid">
+      <figure class="tool" tabindex="0"><img loading="lazy" src="assets/l01/aulas/instr_aula_1.jpg" alt="Um caderno aberto em branco com uma caneta-tinteiro de ouro — o instrumento da Aula 1"><figcaption><span class="t-name">Aula 1 · Introdução</span><span class="t-body"><span class="t-what">Quem é a Vanessa e por que o controle financeiro é o pilar de um negócio digital.</span><span class="t-gold">Da Vanessa: “são informações que vão determinar o sucesso do seu negócio”. Pegue papel e caneta.</span></span></figcaption></figure>
+      <figure class="tool" tabindex="0"><img loading="lazy" src="assets/l01/aulas/instr_aula_2.jpg" alt="Uma lupa antiga de latão sobre a mesa — o olhar de investidor da Aula 2"><figcaption><span class="t-name">Aula 2 · Sem crise e sem caos</span><span class="t-body"><span class="t-what">A pergunta que abre o curso: você tem o olhar de um investidor sobre o próprio negócio?</span><span class="t-gold">Da Vanessa: “você investe seu tempo, sua energia, seu dinheiro e até a sua paz” — e o dever de casa de gestor?</span></span></figcaption></figure>
+      <figure class="tool" tabindex="0"><img loading="lazy" src="assets/l01/aulas/instr_aula_3.jpg" alt="Um manômetro de latão com mostrador limpo — o oxigênio do caixa, Aula 3"><figcaption><span class="t-name">Aula 3 · O oxigênio do negócio</span><span class="t-body"><span class="t-what">O caixa como oxigênio: quanto tempo a operação se sustenta se os clientes pararem hoje.</span><span class="t-gold">Da Vanessa: um cliente monetizado no YouTube caiu de 40 a 50 mil para 5 mil por mês. O caixa é o que segura.</span></span></figcaption></figure>
+      <figure class="tool" tabindex="0"><img loading="lazy" src="assets/l01/aulas/instr_aula_4.jpg" alt="Uma bandeja de latão com três divisões de moedas — gastos, custos e despesas, Aula 4"><figcaption><span class="t-name">Aula 4 · Case real: virando o jogo</span><span class="t-body"><span class="t-what">Gastos, custos e despesas: as classificações sem as quais a margem não aparece.</span><span class="t-gold">Da Vanessa: “sócio pobre, empresa rica. Depois, o sócio fica rico.”</span></span></figcaption></figure>
+      <figure class="tool" tabindex="0"><img loading="lazy" src="assets/l01/aulas/instr_aula_5.jpg" alt="Uma chapa de vidro iluminada por trás com sete barras, a última dourada — a DRE como raio-X, Aula 5"><figcaption><span class="t-name">Aula 5 · DRE, o raio-X do resultado</span><span class="t-body"><span class="t-what">A DRE pelo regime de competência, do que entrou até a linha da lucratividade.</span><span class="t-gold">Da Vanessa: “a DRE é como se fosse um raio-X do resultado do seu negócio”.</span></span></figcaption></figure>
+      <figure class="tool" tabindex="0"><img loading="lazy" src="assets/l01/aulas/instr_aula_6.jpg" alt="Uma caixa de pesos de calibração com um peso de ouro fora do estojo — precificação, Aula 6"><figcaption><span class="t-name">Aula 6 · Precificação inteligente</span><span class="t-body"><span class="t-what">Preço por custo, posicionamento e percepção de valor — não por olhar o concorrente.</span><span class="t-gold">Da Vanessa: “precificar de forma inteligente é o que separa quem vive apagando incêndios de quem constrói um negócio rentável”.</span></span></figcaption></figure>
+      <figure class="tool" tabindex="0"><img loading="lazy" src="assets/l01/aulas/instr_raio_x.jpg" alt="Uma grelha de latão com uma única célula preenchida de ouro — a planilha Raio-X do Lucro"><figcaption><span class="t-name">O Raio-X do Lucro</span><span class="t-body"><span class="t-what">A planilha usada por dentro das aulas para montar o seu mês.</span><span class="t-gold">É onde o método acontece: você vê a planilha ser preenchida antes de preencher a sua.</span></span></figcaption></figure><figure class="tool" tabindex="0"><img loading="lazy" src="assets/l01/aulas/instr_roteiro.jpg" alt="Uma folha dobrada de pé com um fio de ouro na dobra — o Roteiro da Conversa com o Contador"><figcaption><span class="t-name">Roteiro da Conversa com o Contador</span><span class="t-body"><span class="t-what">O que pedir ao seu escritório de contabilidade, em PDF, anexo à Aula 5.</span><span class="t-gold">Uma folha que faz o relatório chegar já no formato que você consegue ler.</span></span></figcaption></figure>
+    </div>
+    <p class="reveal" style="text-align:center;margin:30px auto 0;max-width:46ch;font-family:var(--serif);font-style:italic;font-size:clamp(19px,2.4vw,25px);color:var(--gold-hi)">Cabem numa sexta-feira das 8 às 9 da manhã, que é a rotina que a própria Vanessa mantém.</p>
+    <p class="note reveal" style="text-align:center;margin-top:16px">As seis aulas trazem dois instrumentos dentro: o Raio-X do Lucro, avaliado em R$ 67, e o Roteiro da Conversa com o Contador, avaliado em R$ 27.</p>
+  </div>
+</section>
+
+<!-- RESPIRO OURO EM PÓ - clímax de valor, logo após as ferramentas (decisão do Conselho 07/07) -->
+<section class="dustbeat">
+  <div class="db-frame">
+    <div class="db-media"><img src="assets/l01/surreal/pilhas_semana.jpg" alt="A luz do farol varrendo o escuro, sobre fundo roxo profundo" loading="lazy" onerror="this.style.display='none'"></div>
+    <div class="db-veil"></div>
+    <div class="db-copy">
+      <div class="label reveal">A última linha</div>
+      <h2 class="reveal" style="--d:.05s">O que cabe numa sexta-feira<br>decide a sua segunda.</h2>
+      <p class="reveal" style="--d:.1s">Cada aula acende uma parte do percurso. Juntas, elas mostram o caminho do dinheiro da venda até a linha da lucratividade.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- PROVA (01/09) -->
+<section>
+  <div class="wrap">
+    <div class="label reveal">Por que uma hora por semana muda o resultado</div>
+    <h2 class="reveal" style="--d:.05s;margin-top:10px">Duas empresas, o mesmo mês.<br>Uma olhou os números. A outra, não.</h2>
+    <div class="reveal" style="--d:.1s;margin-top:28px"><div class="duas">
+  <div class="dre a">
+    <h4>Empresa A</h4><div class="fat">R$ 100.000</div>
+    <div class="lin">Impostos sobre vendas <b>− 15.000</b></div>
+    <div class="lin">Custos dos serviços <b>− 50.000</b></div>
+    <div class="lin">Despesas <b>− 28.800</b></div>
+    <div class="lin">Receitas financeiras <b>+ 8.000</b></div>
+    <div class="res"><span>Lucro líquido</span><span class="pct">14%</span></div>
+    <span class="selo">sobraram R$ 14.200</span>
+  </div>
+  <div class="dre b">
+    <h4>Empresa B</h4><div class="fat">R$ 40.000</div>
+    <div class="lin">Impostos sobre vendas <b>− 6.000</b></div>
+    <div class="lin">Custos dos serviços <b>− 5.000</b></div>
+    <div class="lin">Despesas <b>− 4.100</b></div>
+    <div class="lin">Receitas financeiras <b>—</b></div>
+    <div class="res"><span>Lucro líquido</span><span class="pct">62%</span></div>
+    <span class="selo">sobraram R$ 24.900</span>
+  </div>
+</div>
+<p class="dre-nota">Exemplo didático usado na Aula 5 — não é o resultado de um cliente real.</p></div>
+  </div>
+</section>
+
+<!-- PARA QUEM -->
+<section>
+  <div class="wrap">
+    <div class="label reveal">Para quem é, e para quem não é</div>
+    <div class="cols reveal" style="margin-top:16px">
+      <div class="yes"><h3>É para você se</h3><ul><li>Vende pela internet (infoproduto, agência, coprodução, serviço) e o dinheiro entra sem que você saiba quanto ficou.</li><li>É quem decide o preço, a retirada e o corte. Não existe outra pessoa para assinar por você.</li><li>É MEI ou empresa pequena, com o dinheiro das vendas ainda caindo misturado na conta pessoal.</li><li>Tem <b>uma hora por semana</b> para sentar com o próprio número — e entende que é a hora que decide o que sobra do resto.</li></ul></div>
+      <div class="no"><h3>Não é para você se</h3><ul><li>Procura uma forma de pagar menos imposto sem mexer no que causa o problema.</li><li>Quer que alguém resolva sem que você olhe o próprio extrato.</li><li>Espera que este material prometa aumento de faturamento ou de lucro.</li><li>Quer um arquivo pronto para baixar e nunca abrir.</li><li>Não tem <b>uma hora por semana</b> para olhar o próprio extrato — sem essa hora, nenhum material resolve.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROVA + caco resultado -->
+<section>
+  <div class="duo">
+    <figure class="shard s3"><img loading="lazy" src="assets/l01/surreal/regua_recibos.jpg" alt="Meses fechados até a última linha, lado a lado"><svg class="seam" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M8 2 L100 0 L92 96 L0 100 Z"/></svg><span class="cap">A última linha</span></figure>
+    <div class="reveal">
+      <div class="label">Leituras que aconteceram</div>
+      <div class="case"><span class="n">43% no papel</span><span class="nm">psicólogo · carteira da expert</span><p>43% de lucro no papel, um relatório correto e R$ 1.600 em caixa. A conta não fechava com a sensação, e ele achava que era o imposto. A linha que ninguém tinha lido era a da retirada.</p></div>
+      <div class="case"><span class="n">Não fechou</span><span class="nm">sócia · serviços</span><p>Faturamento alto, margem quase nula e a decisão de dissolver a sociedade já tomada. A conversa não começou por motivação: começou pela linha errada que ela estava olhando. Ela não fechou.</p></div>
+      <p class="note">Casos reais da carteira da expert, anonimizados. Ilustrativos de método, nunca previsão de resultado.</p>
+    </div>
+  </div>
+</section>
+
+<!-- OFERTA -->
+<section class="cap" id="oferta">
+  <div class="wrap">
+    <div class="label reveal">A oferta</div>
+    <h2 class="reveal" style="--d:.05s;font-size:clamp(30px,4.6vw,50px)">Tudo o que entra, e o que vale.</h2>
+    <div class="rule reveal"></div>
+    <div class="offer reveal">
+      <table class="stack"><tbody>
+        <tr><td>Curso Lucro à Vista <span style="color:var(--ink-3)">· 6 aulas, as 5 etapas do método</span></td><td class="v">R$ 197</td></tr>
+        <tr><td>O Raio-X do Lucro <span style="color:var(--ink-3)">· a planilha usada por dentro das aulas</span></td><td class="v">R$ 67</td></tr>
+        <tr><td>Roteiro da Conversa com o Contador <span style="color:var(--ink-3)">· PDF, anexo à Aula 5</span></td><td class="v">R$ 27</td></tr>
+        <tr><td>O livro <em style="font-style:italic">“Sem Crise Sem Caos”</em> <span style="color:var(--ink-3)">· digital e completo</span></td><td class="v">R$ 37</td></tr>
+        <tr><td>Área de membros <span style="color:var(--ink-3)">· dúvidas com resposta em 48h úteis</span></td><td class="v">R$ 47</td></tr>
+      </tbody><tfoot>
+        <tr class="tot"><td>Valor total</td><td class="v">R$ 375</td></tr>
+        <tr class="price"><td class="lab">Você investe hoje</td><td class="v">R$ 97</td></tr>
+      </tfoot></table>
+      <div class="cta-area" style="margin-top:26px"><a class="btn" href="https://pay.hotmart.com/AGUARDANDO-LINK-L01" data-cta="checkout" data-checkout style="width:100%;text-align:center">Quero fechar o mês com o número na mão · R$ 97</a><div class="under" style="text-align:center">parcelado em até 12x no cartão · acesso em até <b>1 minuto</b></div></div>
+    </div>
+    <!-- ORDER BUMP · O Custo da Sua Hora (oferta.md, Bump 1) — na pagina ele se ANUNCIA;
+         quem o adiciona de fato e o checkout da Hotmart (implantacao = mao do dono) -->
+    <aside class="bump reveal" style="--d:.08s" aria-label="Disponível no checkout">
+      <div class="bump-tag">no checkout, se você quiser</div>
+      <div class="bump-grid">
+        <div>
+          <div class="bump-name">O Custo da Sua Hora</div>
+          <p class="bump-p">A peça inteira fala de uma hora por semana. Este instrumento responde a pergunta
+          que fica: <strong>quanto custa cada hora sua entregue ao negócio</strong> — uma calculadora de uma
+          tela e um guia de 4 páginas para usar o número no seu preço.</p>
+        </div>
+        <div class="bump-price"><b>+ R$ 27</b><span>uma caixinha na tela de pagamento</span></div>
+      </div>
+    </aside>
+    <div class="guar reveal" style="margin-top:34px">
+      <div class="gtag">7 dias, incondicional</div>
+      <div class="gt">Sete dias para testar sem risco.</div>
+      <p style="color:var(--ink-2);margin:0">Você acessa, assiste à primeira aula e abre o Raio-X do Lucro. Se não fizer sentido, devolvemos o seu dinheiro, sem você justificar nada.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LIVROS · oferta especial (19/08) -->
+<section class="cap" id="livros">
+  <div class="wrap">
+    <div class="label reveal">Também nesta oferta</div>
+    <h2 class="reveal" style="--d:.05s;font-size:clamp(30px,4.6vw,50px)"><em>“Sem Crise Sem Caos”</em>,<br>o livro por dentro.</h2>
+    <div class="rule reveal"></div>
+    <p class="reveal" style="--d:.08s;color:var(--ink-2);margin:0 0 6px">São dois produtos próprios, cada um com preço próprio: <strong style="color:#FFFFFF">R$ 47</strong> o livro, que continua sendo vendido assim. O que esta oferta faz é juntá-lo ao curso numa compra só.</p>
+    <p class="reveal" style="--d:.1s;color:var(--ink-2);margin:0 0 6px">O livro nasceu antes do curso e registra o método em prosa; a planilha é onde ele acontece. Um explica com calma, a outra mede o seu mês. E conversam entre si.</p>
+
+    <div class="lv-books">
+      <figure class="lv-book lv-b1 reveal" style="margin:0">
+        <img src="assets/l01/livro_sem_crise_sem_caos_web.jpg" alt="Sem Crise Sem Caos, livro digital completo" loading="lazy" width="438" height="620">
+        <span class="sheen"></span>
+      </figure>
+      <figure class="lv-book lv-b2 reveal" style="margin:0">
+        <img src="assets/l01/raio_x_do_lucro_web.jpg" alt="O Raio-X do Lucro, a planilha do método" loading="lazy" width="438" height="620">
+        <span class="sheen"></span>
+      </figure>
+    </div>
+    <p class="lv-cap reveal" style="--d:.3s">o livro &nbsp;·&nbsp; o instrumento</p>
+
+    <div class="lv-grid" style="margin-top:38px">
+      <div class="lv-card reveal" style="--d:.16s">
+        <p class="lv-tag">Livro digital completo · produto próprio, R$ 37</p>
+        <h3 class="lv-t">Sem Crise Sem Caos</h3>
+        <p class="lv-s">Finanças para quem vive do digital, com calma e por escrito</p>
+        <ul class="lv-l">
+          <li>As <b>seis paradas do dinheiro</b>, uma por capítulo, na ordem em que o real passa por elas</li>
+          <li>O <b>prejuízo silencioso</b>: o sócio invisível chamado decisão errada, que retira do caixa todo mês e não aparece em relatório nenhum</li>
+          <li>A <b>retirada sem regra</b> que faz o dono tirar pelo saldo que apareceu na tela, sem valor definido e sem data</li>
+          <li>Um <b>critério de conclusão</b> ao fim de cada etapa, para você saber quando terminou</li>
+          <li>O <b>mapa da separação</b>, com o que é seu, o que é da empresa e a retirada definida antes</li>
+          <li>As <b>cinco etapas do método</b> que o livro percorre em prosa, para ler no domingo</li>
+        </ul>
+      </div>
+
+      <div class="lv-card reveal" style="--d:.22s">
+        <p class="lv-tag">O instrumento · planilha do método</p>
+        <h3 class="lv-t">O Raio-X do Lucro</h3>
+        <p class="lv-s">Onde o método acontece, linha a linha</p>
+        <ul class="lv-l">
+          <li>O mês montado etapa a etapa, no formato <b>“o que entrou”</b> contra <b>“o que sobrou”</b></li>
+          <li>As <b>categorias</b> que estavam no seu extrato o tempo todo, e que ninguém tinha somado</li>
+          <li>As <b>cinco etapas</b> do método: o registro, a separação, a margem, a reserva e a linha do lucro</li>
+          <li>A virada: separar o que era dele do que era da empresa e ler a linha da retirada, que nenhuma coluna a mais teria mostrado</li>
+        </ul>
+        <p class="lv-quote">“O que está matando o seu negócio é o próprio sócio, e não efetivamente os impostos.”</p>
+      </div>
+    </div>
+
+    <p class="lv-honest reveal" style="--d:.26s">O primeiro é o livro, para ler com calma longe da tela do mês. O segundo é a planilha, onde o mês acontece. O livro te faz pensar; a planilha te faz preencher.</p>
+    <p class="lv-close reveal" style="--d:.3s">Os dois entram na sua área junto com o curso, no mesmo minuto, e ficam com você.</p>
+  </div>
+</section>
+
+<!-- AUTORIDADE + caco do expert -->
+<section>
+  <div class="duo rev">
+    <div class="reveal">
+      <div class="label">Quem está por trás</div>
+      <h2 style="font-size:clamp(26px,3.6vw,40px)">Vanessa Gonçalves</h2>
+      <p style="color:var(--gold-hi);font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin:8px 0 20px">Contadora · CRC SE-000715/O</p>
+      <p>Em 2015 ela apostou numa franquia de recuperação tributária e a trouxe para Aracaju. A franquia não fechou um único contrato. Sobrou uma dívida grande e um recomeço do zero, e as palavras são dela: “Tivemos que dormir no chão.” De 2015 a 2022 foi assim.</p>
+      <p>“Foi só quando a gente resolveu apostar na contabilidade que as coisas começaram a andar.” Ela levou a carteira para os negócios digitais, e é de lá que vêm as leituras desta página. É por isso que ela conhece as paradas do dinheiro digital, que são diferentes das paradas do comércio da esquina.</p>
+      <p style="font-family:var(--serif);font-style:italic;font-size:19px;color:var(--gold-hi);margin-top:20px">Empreender não é uma linha reta.</p>
+      <p style="margin-top:16px;color:var(--ink-2)"><span style="font-family:var(--serif);font-style:italic;font-size:24px;color:var(--gold-hi)">86%</span> · das pessoas pesquisam o produtor antes de comprar um infoproduto (CNDL/SPC Brasil). O registro e o CNPJ são públicos: confira os dois antes de decidir.</p>
+    </div>
+    <!-- [IMG-EXPERT: ricardo.jpg provisório; trocar pelo ensaio POP 41] -->
+    <figure class="shard s4"><img loading="lazy" src="assets/l01/vanessa.jpg" alt="Vanessa Gonçalves, contadora"><svg class="seam" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M4 0 L96 5 L100 100 L0 95 Z"/></svg></figure>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="cont">
+  <div class="wrap">
+    <div class="label reveal">Perguntas</div>
+    <div class="faq reveal" style="margin-top:16px">
+      <details><summary>Isso não está de graça no YouTube?</summary><div class="ans">Boa parte está, e é bom. E tem um número que mostra o limite disso: 61% dos empreendedores brasileiros seguem pagando a empresa pela conta pessoal, contra 60% em 2023 (Sebrae, Hábitos Financeiros 2025). Com todo esse conteúdo gratuito disponível há anos, o número não se moveu. O que o gratuito não entrega é a ordem: o que registrar primeiro, o que separar antes de qualquer conta, o que provisionar antes de retirar, e qual linha responde à sua pergunta.</div></details>
+      <details><summary>Não sou de números. Vou dar conta?</summary><div class="ans">As aulas foram gravadas sem contabilês, e o teste é simples: cada termo técnico que aparece vem traduzido na frase seguinte. Você não precisa aprender contabilidade, precisa aprender a ler cinco coisas na ordem certa, com o seu próprio mês na tela. Se ainda assim não fizer sentido, existem sete dias para devolver sem explicar nada.</div></details>
+      <details><summary>Eu já pago um contador. Isso serve para mim?</summary><div class="ans">Serve, e o seu contador continua onde está. Contabilidade fiscal entrega guia e obrigação acessória, que é o trabalho dele e precisa ser feito. Ler o mês para decidir preço, retirada e corte é outro trabalho, e ele é seu, porque quem decide é você. A Aula 5 traz um roteiro do que pedir ao seu escritório, para o relatório chegar já no formato que você consegue ler. A relação melhora, não piora.</div></details>
+      <details><summary>Depois dos R$ 97 vem alguma coisa cara?</summary><div class="ans">Não vem call obrigatória, não vem formulário de aplicação e não vem etapa que termina em oferta. Fora do checkout existem duas coisas, e só duas: o livro Sem Crise Sem Caos sozinho, por R$ 37, para quem quer apenas a leitura (se você comprou o combo, ele já está dentro); e o serviço de contabilidade e BPO da Infocontabilidade, para quem, depois de aprender a ler o próprio número, decidir delegar a operação. Nada nele é obrigatório para usar o que você recebeu aqui.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- FECHO · a peça inteira (o depois) - segundo herói -->
+<div aria-hidden="true" style="height:180px;margin-bottom:-1px;background:linear-gradient(180deg,rgba(11,10,8,0),var(--bg))"></div>
+<section class="hero finale2" id="finale">
+  <div class="stage" id="finaleStage"><div class="bowl-base"></div><canvas id="finaleReveal"></canvas></div>
+  <div class="hveil"></div>
+  <div class="hin"><div class="hc">
+    <div class="label reveal">O depois</div>
+    <h2 class="fh reveal" style="--d:.06s">O mês inteiro.<br>A última linha <em>lida</em>.</h2>
+    <p class="sub reveal" style="--d:.14s">Você chegou sabendo o que já sabia: o dinheiro entra e você não sabe quanto fica. A diferença é que agora tem nome.</p>
+    <p class="recap2 reveal" style="--d:.18s">6 aulas, o Raio-X do Lucro, o Roteiro da Conversa com o Contador e o livro Sem Crise Sem Caos por <strong>R$ 97 à vista</strong> · 7 dias para devolver, sem justificar · acesso em 1 minuto</p>
+    <div class="cta-area reveal" style="--d:.22s"><a class="btn" href="https://pay.hotmart.com/AGUARDANDO-LINK-L01" data-cta="checkout-final" data-checkout>Quero fechar o próximo mês sabendo quanto sobrou · R$ 97</a><div class="under">valor total R$ 375 · você investe <b>R$ 97</b> hoje, parcelado em até 12x no cartão</div></div>
+    <div class="hint reveal" style="--d:.28s"><span class="hd">passe o mouse e revele a ampulheta</span><span class="ht">deslize o dedo e revele a ampulheta</span></div>
+    <p class="foot reveal" style="--d:.32s">Conteúdo educativo de contabilidade e finanças. Não constitui recomendação de investimento (CVM) nem consultoria contábil individualizada. Resultados dependem da aplicação de cada pessoa ao próprio negócio. Casos citados são reais, anonimizados e ilustrativos de método, nunca previsão de resultado (NBC PG 01).</p>
+  </div></div>
+</section>
+</main>
+
+<script src="assets/filme/loader.js?v=1"></script>
+<script>
+(function(){
+  var doc=document.documentElement; doc.classList.add('js');
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(!reduce) doc.classList.add('motion');
+  var els=[].slice.call(document.querySelectorAll('.reveal,.shard'));
+  function show(el){el.classList.add('in');}
+  if(reduce){els.forEach(show);}
+  else if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){show(e.target);io.unobserve(e.target);}});},{threshold:0.16,rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(el){io.observe(el);}); setTimeout(function(){if(!document.querySelector('.reveal.in'))els.forEach(show);},1600);
+  } else els.forEach(show);
+  /* entregáveis: os cacos se encaixam em cascata */
+  var tg=document.querySelector('.tools-grid');
+  if(tg){ var tools=[].slice.call(tg.querySelectorAll('.tool'));
+    function fitTool(t){ t.classList.add('in'); }
+    if(reduce||!('IntersectionObserver' in window)){ tools.forEach(fitTool); }
+    else{ var tio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){ tools.forEach(function(t,i){ setTimeout(function(){fitTool(t);}, i*95); }); tio.disconnect(); }});},{threshold:0.2});
+      tio.observe(tg); setTimeout(function(){ if(tools[0]&&!tools[0].classList.contains('in')) tools.forEach(fitTool); },2400); }
+    /* um por um: toque/clique abre o card (mobile + teclado); no desktop o hover já revela */
+    tools.forEach(function(t){ t.addEventListener('click',function(){ var op=t.classList.contains('open'); tools.forEach(function(o){o.classList.remove('open');}); if(!op)t.classList.add('open'); tg.classList.toggle('has-open',!op); });
+      t.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); t.click(); } }); });
+    tg.addEventListener('mouseleave',function(){ tools.forEach(function(o){o.classList.remove('open');}); tg.classList.remove('has-open'); });
+    /* luz do farol: solta do caco no hover (o ouro escondido que se revela) */
+    var sec=tg.closest('section');
+    if(sec&&!reduce){
+      if(getComputedStyle(sec).position==='static') sec.style.position='relative';
+      var dust=document.createElement('canvas');
+      dust.style.cssText='position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:5';
+      sec.appendChild(dust);
+      var dctx=dust.getContext('2d'),ddpr=Math.min(window.devicePixelRatio||1,2),parts=[],DW=0,DH=0;
+      var cols=['#F2D990','#E8CE86','#C9A742','#F7EFD9'];
+      function dresize(){var r=sec.getBoundingClientRect();DW=r.width;DH=r.height;dust.width=Math.round(DW*ddpr);dust.height=Math.round(DH*ddpr);dctx.setTransform(ddpr,0,0,ddpr,0,0);}
+      dresize(); window.addEventListener('resize',dresize,{passive:true});
+      /* o loop só existe quando há o que desenhar: liga por IntersectionObserver
+         (a dobra visível) e DORME com 0 partículas — retoma no próximo emit */
+      var dvis=false,drun=false;
+      function dwake(){if(!drun&&dvis&&parts.length){drun=true;requestAnimationFrame(drender);}}
+      function emit(x,y,n){for(var i=0;i<n&&parts.length<220;i++){parts.push({x:x+(Math.random()*30-15),y:y+(Math.random()*10-5),vx:Math.random()*1.2-0.6,vy:-(0.5+Math.random()*1.7),g:0.013+Math.random()*0.010,life:1,decay:0.005+Math.random()*0.006,sz:1.6+Math.random()*3.2,tw:Math.random()*6.28,tws:0.08+Math.random()*0.12,c:cols[(parts.length+i)%cols.length]});}dwake();}
+      if('IntersectionObserver' in window){
+        new IntersectionObserver(function(es){dvis=es[0].isIntersecting;if(dvis)dwake();else{parts.length=0;drun=false;dctx.clearRect(0,0,DW,DH);}},{rootMargin:'150px'}).observe(sec);
+      } else dvis=true;
+      tools.forEach(function(t){
+        t.addEventListener('mouseenter',function(e){var r=sec.getBoundingClientRect();emit(e.clientX-r.left,e.clientY-r.top,12);});
+        t.addEventListener('mousemove',function(e){if(Math.random()<0.5){var r=sec.getBoundingClientRect();emit(e.clientX-r.left,e.clientY-r.top,2);}});
+      });
+      function drender(){
+        if(!dvis||!parts.length){drun=false;dctx.clearRect(0,0,DW,DH);return;}
+        dctx.clearRect(0,0,DW,DH);
+        for(var i=parts.length-1;i>=0;i--){var p=parts[i];
+          p.x+=p.vx;p.y+=p.vy;p.vy+=p.g;p.vx*=0.99;p.tw+=p.tws;p.life-=p.decay;
+          if(p.life<=0){parts.splice(i,1);continue;}
+          var tw=0.6+0.4*Math.sin(p.tw),a=Math.max(0,Math.min(1,p.life*1.3))*tw,R=p.sz*6;
+          var grd=dctx.createRadialGradient(p.x,p.y,0,p.x,p.y,R);
+          grd.addColorStop(0,'rgba(255,246,214,'+(0.95*a).toFixed(3)+')');
+          grd.addColorStop(0.35,'rgba(242,210,122,'+(0.55*a).toFixed(3)+')');
+          grd.addColorStop(1,'rgba(198,154,62,0)');
+          dctx.globalAlpha=1;dctx.fillStyle=grd;
+          dctx.beginPath();dctx.arc(p.x,p.y,R,0,7);dctx.fill();
+          dctx.globalAlpha=Math.min(1,a);dctx.fillStyle='#FDFCFA';
+          dctx.beginPath();dctx.arc(p.x,p.y,Math.max(0.9,p.sz*0.55),0,7);dctx.fill();}
+        dctx.globalAlpha=1;requestAnimationFrame(drender);
+      }
+    }
+  }
+
+  var bar=document.getElementById('bar');
+  /* PERF (Fase 5 da scroll-cinema): as métricas de layout são medidas UMA vez em
+     load/resize/mudança de altura; o onScroll só lê window.pageYOffset + o cache.
+     E o --heal (que alimenta o mask-image de um fixed de tela cheia) grava em
+     degraus de 2% — antes gravava a cada 0,1% de rolagem. */
+  var cineSec=document.querySelector('.cineh');
+  var M={vh:0,h:0,barY:0},healQ=-1;
+  function mede(){M.vh=window.innerHeight;M.h=document.body.scrollHeight-M.vh;M.barY=cineSec?(cineSec.offsetTop+cineSec.offsetHeight-M.vh*0.4):(M.vh*0.8);}
+  function onScroll(){var y=window.pageYOffset||0,p=M.h>0?Math.min(1,Math.max(0,y/M.h)):0;if(y>M.barY)bar.classList.add('show');else bar.classList.remove('show');if(!reduce){var q=Math.round(p*50);if(q!==healQ){healQ=q;doc.style.setProperty('--heal',(q*2)+'%');}}}
+  function remede(){mede();onScroll();}
+  mede();
+  window.addEventListener('scroll',onScroll,{passive:true});window.addEventListener('resize',remede,{passive:true});window.addEventListener('load',remede);
+  if('ResizeObserver' in window){try{new ResizeObserver(remede).observe(document.body);}catch(e){}}
+  onScroll();
+
+  function fb(ev,p){try{if(window.fbq)fbq('track',ev,p||{});}catch(e){}}
+  var of=document.getElementById('oferta');
+  if(of&&'IntersectionObserver' in window){var vo=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){fb('ViewContent',{content_name:'oferta_lucro_a_vista'});vo.disconnect();}});},{threshold:0.3});vo.observe(of);}
+  document.querySelectorAll('[data-cta]').forEach(function(a){a.addEventListener('click',function(){if(a.hasAttribute('data-checkout'))fb('InitiateCheckout',{content_name:'curso_lucro_a_vista',value:97,currency:'BRL'});else fb('Lead',{content_name:'cta_'+a.getAttribute('data-cta')});});});
+
+  /* HERO reveal por cursor */
+  var stage=document.getElementById('stage'),cv=document.getElementById('reveal');
+  if(stage&&cv&&!reduce){
+    var ctx=cv.getContext('2d'),mask=document.createElement('canvas'),mctx=mask.getContext('2d');
+    var gold=new Image();gold.src='assets/l01/surreal/balanca_hora.jpg';
+    var W=0,H=0,dpr=Math.min(window.devicePixelRatio||1,2),cover={x:0,y:0,w:0,h:0},ready=false;
+    function cr(iw,ih,cw,ch){var s=Math.max(cw/iw,ch/ih),w=iw*s,h=ih*s;return{x:(cw-w)*0.22,y:(ch-h)/2,w:w,h:h};}
+    function rs(){var r=stage.getBoundingClientRect();W=r.width;H=r.height;cv.width=mask.width=Math.round(W*dpr);cv.height=mask.height=Math.round(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);mctx.setTransform(dpr,0,0,dpr,0,0);if(gold.naturalWidth)cover=cr(gold.naturalWidth,gold.naturalHeight,W,H);}
+    gold.onload=function(){ready=true;rs();sw();};window.addEventListener('resize',rs,{passive:true});
+    function pt(x,y,s){var R=Math.max(64,Math.min(W,H)*0.13),g=mctx.createRadialGradient(x,y,0,x,y,R);g.addColorStop(0,'rgba(0,0,0,'+(0.9*s)+')');g.addColorStop(.6,'rgba(0,0,0,'+(0.5*s)+')');g.addColorStop(1,'rgba(0,0,0,0)');mctx.fillStyle=g;mctx.beginPath();mctx.arc(x,y,R,0,7);mctx.fill();}
+    var lx=null,ly=null;
+    function mv(x,y){if(!ready)return;if(lx!==null){var d=Math.hypot(x-lx,y-ly),st=Math.max(1,Math.floor(d/14));for(var i=1;i<=st;i++)pt(lx+(x-lx)*i/st,ly+(y-ly)*i/st,1);}else pt(x,y,1);lx=x;ly=y;}
+    stage.addEventListener('mousemove',function(e){var r=stage.getBoundingClientRect();mv(e.clientX-r.left,e.clientY-r.top);});
+    stage.addEventListener('mouseleave',function(){lx=ly=null;});
+    stage.addEventListener('touchmove',function(e){var r=stage.getBoundingClientRect(),t=e.touches[0];mv(t.clientX-r.left,t.clientY-r.top);},{passive:true});
+    function sw(){var t=0,y=H*0.5;(function s(){if(t>1)return;pt(W*0.08+(W*0.34)*t,y+Math.sin(t*6)*H*0.06,0.85);t+=0.02;requestAnimationFrame(s);})();}
+    (function rn(){mctx.globalCompositeOperation='destination-out';mctx.fillStyle='rgba(0,0,0,0.006)';mctx.fillRect(0,0,W,H);mctx.globalCompositeOperation='source-over';if(ready){ctx.clearRect(0,0,W,H);ctx.globalCompositeOperation='source-over';ctx.drawImage(gold,cover.x,cover.y,cover.w,cover.h);ctx.globalCompositeOperation='destination-in';ctx.drawImage(mask,0,0,W,H);ctx.globalCompositeOperation='source-over';}requestAnimationFrame(rn);})();
+  }
+
+  /* FECHO reveal por cursor - MESMA mecânica do herói */
+  var fst=document.getElementById('finaleStage'),fcv=document.getElementById('finaleReveal');
+  if(fst&&fcv&&!reduce){
+    var fx=fcv.getContext('2d'),fmk=document.createElement('canvas'),fmx=fmk.getContext('2d'),fvis=true,frun=true;
+    var fg=new Image();fg.src='assets/l01/surreal/ampulheta_cheia.jpg';
+    var FW=0,FH=0,fdp=Math.min(window.devicePixelRatio||1,2),fco={x:0,y:0,w:0,h:0},frd=false;
+    function fcr(iw,ih,cw,ch){var m=cw<=720,s=Math.max(cw/iw,ch/ih)*(m?1.5:1),w=iw*s,h=ih*s;return{x:(cw-w)*(m?0.57:0.5),y:(ch-h)*(m?0.92:0.5),w:w,h:h};}
+    function frs(){var r=fst.getBoundingClientRect();FW=r.width;FH=r.height;fcv.width=fmk.width=Math.round(FW*fdp);fcv.height=fmk.height=Math.round(FH*fdp);fx.setTransform(fdp,0,0,fdp,0,0);fmx.setTransform(fdp,0,0,fdp,0,0);if(fg.naturalWidth)fco=fcr(fg.naturalWidth,fg.naturalHeight,FW,FH);}
+    fg.onload=function(){frd=true;frs();fsw();};window.addEventListener('resize',frs,{passive:true});
+    function fpt(x,y,s){var R=Math.max(64,Math.min(FW,FH)*0.13),g=fmx.createRadialGradient(x,y,0,x,y,R);g.addColorStop(0,'rgba(0,0,0,'+(0.9*s)+')');g.addColorStop(.6,'rgba(0,0,0,'+(0.5*s)+')');g.addColorStop(1,'rgba(0,0,0,0)');fmx.fillStyle=g;fmx.beginPath();fmx.arc(x,y,R,0,7);fmx.fill();}
+    var fl=null,fL=null;
+    function fmv(x,y){if(!frd)return;if(fl!==null){var d=Math.hypot(x-fl,y-fL),st=Math.max(1,Math.floor(d/14));for(var i=1;i<=st;i++)fpt(fl+(x-fl)*i/st,fL+(y-fL)*i/st,1);}else fpt(x,y,1);fl=x;fL=y;}
+    fst.addEventListener('mousemove',function(e){var r=fst.getBoundingClientRect();fmv(e.clientX-r.left,e.clientY-r.top);});
+    fst.addEventListener('mouseleave',function(){fl=fL=null;});
+    fst.addEventListener('touchmove',function(e){var r=fst.getBoundingClientRect(),t=e.touches[0];fmv(t.clientX-r.left,t.clientY-r.top);},{passive:true});
+    function fsw(){var t=0;(function s(){if(t>1)return;fpt(FW*0.06+(FW*0.5)*t,FH*(0.42+0.12*Math.sin(t*5)),0.95);t+=0.012;requestAnimationFrame(s);})();}
+    if('IntersectionObserver' in window){fvis=false;new IntersectionObserver(function(es){if(es[0].isIntersecting){fvis=true;if(!frun){frun=true;requestAnimationFrame(frn);}}else{fvis=false;}},{rootMargin:'200px'}).observe(fst);}
+    function frn(){if(!fvis){frun=false;return;}fmx.globalCompositeOperation='destination-out';fmx.fillStyle='rgba(0,0,0,0.006)';fmx.fillRect(0,0,FW,FH);fmx.globalCompositeOperation='source-over';if(frd){fx.clearRect(0,0,FW,FH);fx.globalCompositeOperation='source-over';fx.drawImage(fg,fco.x,fco.y,fco.w,fco.h);fx.globalCompositeOperation='destination-in';fx.drawImage(fmk,0,0,FW,FH);fx.globalCompositeOperation='source-over';}requestAnimationFrame(frn);}frn();
+  }
+
+  /* CALCULADORA */
+
+  /* ===== CALCULADORA DE LUCRO REAL (01/09) =====
+     Cada campo comeca em "Nao sei" (valor negativo). Enquanto houver um "Nao sei",
+     a conta NAO fecha — e e esse vazio que vende. Decisao do dono. */
+  var probs=[].slice.call(document.querySelectorAll('#probs .prob'));
+  var totalEl=document.getElementById('calcTotal'),subEl=document.getElementById('calcSub'),
+      barEl=document.getElementById('calcBar'),msgEl=document.getElementById('calcMsg'),
+      eyeEl=document.getElementById('calcEyebrow');
+  function brl(n){return 'R$ '+Math.round(n).toLocaleString('pt-BR');}
+  function fillR(inp){var f=(inp.value<0)?0:(inp.value/inp.max);
+    inp.style.backgroundImage='linear-gradient(90deg,var(--gold-hi) '+(f*100).toFixed(1)+'%,rgba(198,154,62,.2) '+(f*100).toFixed(1)+'%)';}
+  function calc(){
+    var faltam=0,fat=0,custos=0;
+    probs.forEach(function(p){
+      var inp=p.querySelector('input'),v=+inp.value,sei=v>=0;
+      p.querySelector('[data-pv]').textContent = sei?brl(v):'Não sei';
+      p.classList.toggle('naosei',!sei);
+      fillR(inp);
+      if(!sei){faltam++;return;}
+      if(p.dataset.tipo==='receita') fat=v; else custos+=v;
+    });
+    if(faltam>0){
+      eyeEl.textContent='O que sobrou no mês';
+      totalEl.textContent='?';
+      subEl.textContent = faltam===1 ? 'falta 1 campo em “Não sei”' : faltam+' campos em “Não sei”';
+      barEl.style.width='0%';
+      msgEl.innerHTML='Enquanto essa conta não fecha, toda decisão do seu negócio — preço, corte, '+
+        'contratação, retirada — é chute. <strong>Não saber é o próprio diagnóstico.</strong>';
+      return;
+    }
+    var lucro=fat-custos, margem = fat>0 ? (lucro/fat*100) : 0;
+    eyeEl.textContent = lucro<0 ? 'O seu mês fechou no vermelho' : 'O que sobrou no mês';
+    totalEl.textContent=brl(lucro);
+    subEl.textContent = fat>0 ? margem.toFixed(0)+'% do que entrou' : 'sem faturamento no mês';
+    barEl.style.width=Math.max(0,Math.min(100,margem))+'%';
+    if(lucro<0) msgEl.innerHTML='Você fechou o mês tirando mais do que sobrou. É a conta que mais aparece aqui — e a que ninguém faz.';
+    else if(margem<15) msgEl.innerHTML='Menos de 15% do que entrou ficou com você. Abaixo de 30% já é sinal de alerta na Aula 2.';
+    else if(margem<30) msgEl.innerHTML='Abaixo de 30% é sinal de alerta: é a régua que a Vanessa usa na Aula 2.';
+    else msgEl.innerHTML='Você sabe a sua conta — e isso já te põe à frente da maioria. O curso mostra o que fazer com ela.';
+  }
+  if(probs.length){probs.forEach(function(p){p.querySelector('input').addEventListener('input',calc);});calc();}
+
+  /* ===== HERO CINE: filme por scroll ===== */
+  (function(){
+    var sec=document.querySelector('.cineh'); if(!sec) return;
+    var cv=document.getElementById('filmeCv');
+    if(reduce||!window.Filme||!cv||!('createImageBitmap' in window)){doc.classList.add('no-cine');return;}
+    var filme=new Filme('assets/filme/'+Filme.tier(),{janela:20});var ROAD=0,BASE=null,REC=null;var ALVO_ESQ=0.46,VAO=0.025;
+    var ctx=cv.getContext('2d'),W=0,H=0,dpr=Math.min(window.devicePixelRatio||1,2),SEGF=null,pronto=false;
+    var p=0,need=false;
+    var prf=sec.querySelector('.cprogf');
+    /* PERF (Fase 5): TODA métrica de layout do palco se mede no rs() — load e
+       resize. O prog() do caminho do scroll só lê window.pageYOffset + o cache.
+       O cache nasce ANTES do aoDecodificar: a pintura do pôster chama rs() de
+       forma síncrona, antes desta linha ser alcançada de outro jeito. */
+    var PM={top:0,total:0};
+    filme.aoDecodificar=function(){if(!need){need=true;requestAnimationFrame(draw);}};(function(){var pi=sec.querySelector('.cposter');function pp(){if(!pi||sec.classList.contains('painted')||!pi.naturalWidth)return;rs();var W2=W,H2=H;if(!W2)return;ctx.clearRect(0,0,W2,H2);var land=W2>H2,s0;if(land){s0=Math.max(W2/pi.naturalWidth,H2/pi.naturalHeight)*1.0;var w=pi.naturalWidth*s0,h=pi.naturalHeight*s0;ctx.fillStyle='rgb(18,10,34)';ctx.fillRect(0,0,W2,H2);ctx.drawImage(pi,W2*0.46-w*0.437,(H2-h)*0.5,w,h);}else{s0=Math.max(W2/pi.naturalWidth,H2/pi.naturalHeight)*1.0;var w2=pi.naturalWidth*s0,h2=pi.naturalHeight*s0;ctx.drawImage(pi,(W2-w2)/2,(H2-h2)*0.42,w2,h2);}}if(pi){if(pi.complete)pp();else pi.addEventListener('load',pp);}})();
+    function rs(){if(ROAD)sec.style.height=(ROAD+window.innerHeight)+'px';var r=sec.querySelector('.palco').getBoundingClientRect();W=r.width;H=r.height;
+      var hc=sec.querySelector('.hc');if(hc){if(W>H){var cw=hc.offsetWidth;sec.style.setProperty('--hc-left',Math.max(24,Math.round(W*(ALVO_ESQ-VAO)-cw))+'px');}else{sec.style.removeProperty('--hc-left');}}cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);
+      var rq=sec.getBoundingClientRect();PM.top=rq.top+(window.pageYOffset||0);PM.total=rq.height-window.innerHeight;}
+    window.addEventListener('resize',rs,{passive:true});
+    /* CLIPES POR PROXIMIDADE (MANIFEST §3). O 1º pack já veio na abertura; os
+       demais NÃO se encadeiam depois do load (era assim que os 26 MB do filme
+       inteiro entravam em cadeia). O palco arma a sequência por
+       IntersectionObserver a ~1,5 viewport e, dentro do ato, o clipe seguinte é
+       pedido quando o atual passa de ~60% — o scrub não espera rede. Arrasto
+       rápido não trava: filme.quadro() devolve o quadro mais próximo já
+       decodificado e, no pior caso, null — e aí o canvas simplesmente segura o
+       último quadro pintado (o draw só limpa quando tem o que desenhar). */
+    var ordem=[],pedido={},armado=false;
+    function pede(i){var c=ordem[i];if(!c||pedido[c])return;pedido[c]=1;filme.clipe(c);}
+    /* GRANULARIDADE DE PACK dentro do clipe de abertura (juiz nº 2, 28/08). A
+       abertura pedia `quebra` INTEIRO só para desenhar o quadro 0 — 9 packs /
+       4,2 MB parados no celular, contra a promessa de ~2 MB. Agora pede só os
+       packs que o scrub vai consumir: PARADO, o pack corrente + 2 de folga
+       (3 packs · 1,4 MB no celular, 2,1 MB no desktop — a 1ª viewport de scrub
+       no celular termina no pack 2); assim que o dedo encosta (p>0) a folga
+       sobe para 4 packs, ~1 viewport à frente no trecho mais rápido. Os packs
+       seguintes entram por PROGRESSO, como já acontecia entre clipes. */
+    function pedeAte(i,t,folga){var c=ordem[i];if(!c||pedido[c])return;
+      var n=filme.ix.clipes[c].n;filme.ateQuadro(c,Math.round(t*(n-1)),folga);}
+    function liga(){if(armado)return;armado=true;pedeAte(0,0,2);if(!need){need=true;requestAnimationFrame(draw);}}
+    function arma(){
+      if('IntersectionObserver' in window){
+        new IntersectionObserver(function(es){if(es[0].isIntersecting)liga();},{rootMargin:'150% 0px'}).observe(sec.querySelector('.palco'));
+      } else liga();
+    }
+    new Promise(function(res){if(document.readyState==='complete')setTimeout(res,80);else window.addEventListener('load',function(){setTimeout(res,80);});}).then(function(){return filme.abrir();}).then(function(ix){return new Promise(function(res){BASE=new Image();BASE.onload=function(){res(ix);};BASE.onerror=function(){res(ix);};BASE.src='assets/filme/'+Filme.tier()+'/'+(ix.base||ix.poster);REC=ix.recorte||null;});}).then(function(ix){
+      /* sem o zoom final: o herói termina no funil sobre a almofada (fora o zoomjoia) */
+      SEGF=ix.SEG.filter(function(g){return g.trecho!=='zoomjoia';});
+      var tot=0;SEGF.forEach(function(g){tot+=g.px||1;});
+      var acc=0;SEGF.forEach(function(g){g.a=acc/tot;acc+=(g.px||1);g.b=acc/tot;});
+      ROAD=ix.clipes.t1.n*(ix.px_por_quadro||(MOB?15:6.5));pronto=true;sec.classList.add('cine-on');rs();draw();var cx=navigator.connection||{};if(!(cx.saveData||/2g|3g/.test(cx.effectiveType||''))){setTimeout(function(){(function rio(i){if(i>=ordem.length)return;filme.clipe(ordem[i]).then(function(){setTimeout(function(){rio(i+1);},80);}).catch(function(){});})(0);},1500);}
+      SEGF.forEach(function(g){if(ordem.indexOf(g.trecho)<0)ordem.push(g.trecho);});
+      arma();
+    }).catch(function(){doc.classList.add('no-cine');});
+    var itens=[].slice.call(sec.querySelectorAll('.seqi')).map(function(el){return{el:el,a:+el.dataset.a,b:+el.dataset.b};});
+    function prog(){return PM.total>0?Math.min(1,Math.max(0,((window.pageYOffset||0)-PM.top)/PM.total)):0;}
+    /* HOLD de absorção: o filme só se move depois do respiro do H1; termina no início do fecho e segura o último quadro */
+    var MOB=window.matchMedia&&window.matchMedia('(max-width:820px)').matches;var HOLD=0.020,FIM=1;
+    function draw(){
+      need=false;if(!pronto)return;
+      var pf=Math.min(1,Math.max(0,(p-HOLD)/(FIM-HOLD)));
+      var sg=SEGF[SEGF.length-1];
+      for(var k=0;k<SEGF.length;k++){if(pf<SEGF[k].b){sg=SEGF[k];break;}}
+      var f=Math.min(1,Math.max(0,(pf-sg.a)/(sg.b-sg.a)));
+      var t=sg.de+(sg.ate-sg.de)*f,n=filme.ix.clipes[sg.trecho].n;
+      /* o clipe do ato corrente completa-se; o seguinte entra a ~60% do atual */
+      if(armado){var ci=ordem.indexOf(sg.trecho);if(ci>=0){pedeAte(ci,t,p>0?4:2);if(t>0.6)pede(ci+1);}}
+      /* iPad de Ouro: SEM fusão entre quadros (texto que conta vira fantasma quando dois quadros se sobrepõem) — quadro mais próximo, corte seco + lerp do scroll */
+      var fi=Math.min(n-1,Math.max(0,t*(n-1))),i0=Math.round(fi),fr=0;var bmp=filme.quadro(sg.trecho,i0);var bmp2=null;
+      if(bmp){
+        ctx.clearRect(0,0,W,H);
+        var land=W>H;
+        if(land){
+          /* iPad de Ouro (02/09): filme ancorado à ESQUERDA em cover; a coluna de texto fica à direita, sobre a mesa escurecida por um degradê. */
+          ctx.fillStyle='rgb('+COR+')';ctx.fillRect(0,0,W,H);
+          var BW=BASE?BASE.naturalWidth:bmp.width,BH=BASE?BASE.naturalHeight:bmp.height;var GEO={escala:1.0,colunaPreta:0,fimDegrade:0.46,fadeV:0.10,ipadEsq:0.437,alvoEsq:ALVO_ESQ};var COR='18,10,34';var s2=Math.max(W/BW,H/BH)*GEO.escala,w=BW*s2,h=BH*s2,dx=W*GEO.alvoEsq-w*GEO.ipadEsq,dy=(H-h)*0.5;
+          if(BASE&&REC){var k=w/BASE.naturalWidth,rx=dx+REC[0]*k,ry=dy+REC[1]*k,rw=REC[2]*k,rh=REC[3]*k;ctx.drawImage(BASE,dx,dy,w,h);ctx.drawImage(bmp,rx,ry,rw,rh);if(bmp2){ctx.globalAlpha=fr;ctx.drawImage(bmp2,rx,ry,rw,rh);ctx.globalAlpha=1;}}else{ctx.drawImage(bmp,dx,dy,w,h);if(bmp2){ctx.globalAlpha=fr;ctx.drawImage(bmp2,dx,dy,w,h);ctx.globalAlpha=1;}}
+          var fD=ctx.createLinearGradient(W*GEO.fimDegrade,0,0,0);fD.addColorStop(0,'rgba('+COR+',0)');fD.addColorStop(0.45,'rgba('+COR+',0.30)');fD.addColorStop(1,'rgba('+COR+',0.55)');ctx.fillStyle=fD;ctx.fillRect(0,0,Math.ceil(W*GEO.fimDegrade),H);
+          if(h<H-2){var fT=ctx.createLinearGradient(0,dy,0,dy+H*GEO.fadeV);fT.addColorStop(0,'rgba(11,10,8,1)');fT.addColorStop(1,'rgba(11,10,8,0)');ctx.fillStyle=fT;ctx.fillRect(0,0,W,dy+H*GEO.fadeV);var fBt=ctx.createLinearGradient(0,dy+h-H*GEO.fadeV,0,dy+h);fBt.addColorStop(0,'rgba(11,10,8,0)');fBt.addColorStop(1,'rgba(11,10,8,1)');ctx.fillStyle=fBt;ctx.fillRect(0,dy+h-H*GEO.fadeV,W,H-(dy+h-H*GEO.fadeV));}
+          var fB=ctx.createLinearGradient(0,H*0.74,0,H);fB.addColorStop(0,'rgba(11,10,8,0)');fB.addColorStop(1,'rgba(11,10,8,0.88)');ctx.fillStyle=fB;ctx.fillRect(0,Math.floor(H*0.74),W,H);
+        }else{
+          var BW2=BASE?BASE.naturalWidth:bmp.width,BH2=BASE?BASE.naturalHeight:bmp.height;var s3=Math.max(W/BW2,H/BH2)*1.0,w2=BW2*s3,h2=BH2*s3;
+          var dx2=(W-w2)/2,dy2=(H-h2)*0.42;if(BASE&&REC){var k2=w2/BASE.naturalWidth,rx2=dx2+REC[0]*k2,ry2=dy2+REC[1]*k2,rw2=REC[2]*k2,rh2=REC[3]*k2;ctx.drawImage(BASE,dx2,dy2,w2,h2);ctx.drawImage(bmp,rx2,ry2,rw2,rh2);if(bmp2){ctx.globalAlpha=fr;ctx.drawImage(bmp2,rx2,ry2,rw2,rh2);ctx.globalAlpha=1;}}else{ctx.drawImage(bmp,dx2,dy2,w2,h2);if(bmp2){ctx.globalAlpha=fr;ctx.drawImage(bmp2,dx2,dy2,w2,h2);ctx.globalAlpha=1;}}
+        }
+        sec.classList.add('painted');
+      }
+      itens.forEach(function(it){
+        var on=p>=it.a&&p<it.b,past=p>=it.b;
+        it.el.classList.toggle('on',on);it.el.classList.toggle('past',past&&!on);
+      });
+      /* o terceiro sinal do ato (convite e saída já existem): o filete de ouro
+         na borda do palco, alimentado pelo p. Só transform — não toca layout. */
+      if(prf)prf.style.transform='scaleX('+p.toFixed(3)+')';
+    }
+    var pT=0,lerping=false;function lstep(){var d=pT-p;if(Math.abs(d)<0.0004){p=pT;lerping=false;draw();return;}p+=d*0.22;draw();requestAnimationFrame(lstep);}function onS(){pT=prog();if(!lerping){lerping=true;requestAnimationFrame(lstep);}}
+    window.addEventListener('scroll',onS,{passive:true});rs();onS();
+  })();
+  /* barra viva: guarda a perda medida e SÓ se transforma quando a dobra da calculadora termina */
+  (function(){
+    var loss=document.getElementById('barLoss'),cta=document.getElementById('barCta'),calcSec=document.getElementById('calculadora');
+    if(!loss||!cta||!probs.length||!calcSec)return;
+    var total=0,earned=false,gat=Infinity;
+    /* o gatilho é métrica de layout: medido em load/resize/altura, não a cada scroll */
+    function medeG(){gat=calcSec.offsetTop+calcSec.offsetHeight-window.innerHeight*0.6;}
+    function aplica(){
+      if(earned&&total>0){loss.innerHTML='Nunca mais perca <span>'+brl(total)+'</span>';cta.textContent='por apenas R$ 97';}
+      else{loss.textContent='';cta.textContent='Ver a oferta';}
+    }
+    probs.forEach(function(pr){pr.querySelector('input').addEventListener('input',function(){
+      var t=0;probs.forEach(function(q){t+=(+q.querySelector('input').value)*(+q.dataset.annual);});
+      total=Math.round(t/500)*500;if(earned)aplica();
+    });});
+    medeG();
+    window.addEventListener('resize',medeG,{passive:true});window.addEventListener('load',medeG);
+    if('ResizeObserver' in window){try{new ResizeObserver(medeG).observe(document.body);}catch(e){}}
+    window.addEventListener('scroll',function(){
+      if(!earned&&total>0&&(window.pageYOffset||0)>gat){earned=true;aplica();}
+    },{passive:true});
+  })();
+
+})();
+</script>
+</body>
+</html>
