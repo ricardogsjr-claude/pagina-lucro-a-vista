@@ -535,8 +535,8 @@ section.hero.cineh{padding:0!important;min-height:0;height:auto;display:block;ov
 <link rel="preload" href="assets/filme/desktop/poster.webp" as="image" fetchpriority="high">
 <style>
 /* hero-filme do iPad de Ouro (02/09): placa LARGA 21:9 com mesa vazia à esquerda; iPad em 46% da tela; coluna de texto à esquerda sobre a pedra, só um véu leve para legibilidade */
-.cineh .hc{--colw:min(500px,34vw);margin-left:var(--hc-left,8vw)!important;margin-right:auto!important;padding:0;box-sizing:content-box}
-.cineh h1{font-size:clamp(36px,3.9vw,56px)}
+.cineh .hc{--colw:min(460px,32vw);margin-left:var(--hc-left,8vw)!important;margin-right:auto!important;padding:0;box-sizing:content-box}
+.cineh h1{font-size:clamp(34px,3.4vw,50px)}
 .cineh .sq-fala p{max-width:22ch}
 .cineh .sq-fecho .ftap{font-size:clamp(34px,3.6vw,54px)}
 .cineh .sq-fecho .note,.cineh #sqAbre .note{font-size:13.5px;color:var(--ink-3);margin:12px 0 0;max-width:36ch}
@@ -1051,7 +1051,7 @@ section.hero.cineh{padding:0!important;min-height:0;height:auto;display:block;ov
     var sec=document.querySelector('.cineh'); if(!sec) return;
     var cv=document.getElementById('filmeCv');
     if(reduce||!window.Filme||!cv||!('createImageBitmap' in window)){doc.classList.add('no-cine');return;}
-    var filme=new Filme('assets/filme/'+Filme.tier(),{janela:20});var ROAD=0,BASE=null,REC=null;var ALVO_ESQ=0.46,VAO=0.025;
+    var filme=new Filme('assets/filme/'+Filme.tier(),{janela:20});var ROAD=0,BASE=null,REC=null;var ALVO_ESQ=0.44,VAO=0.01;
     var ctx=cv.getContext('2d'),W=0,H=0,dpr=Math.min(window.devicePixelRatio||1,2),SEGF=null,pronto=false;
     var p=0,need=false;
     var prf=sec.querySelector('.cprogf');
@@ -1060,7 +1060,7 @@ section.hero.cineh{padding:0!important;min-height:0;height:auto;display:block;ov
        O cache nasce ANTES do aoDecodificar: a pintura do pôster chama rs() de
        forma síncrona, antes desta linha ser alcançada de outro jeito. */
     var PM={top:0,total:0};
-    filme.aoDecodificar=function(){if(!need){need=true;requestAnimationFrame(draw);}};(function(){var pi=sec.querySelector('.cposter');function pp(){if(!pi||sec.classList.contains('painted')||!pi.naturalWidth)return;rs();var W2=W,H2=H;if(!W2)return;ctx.clearRect(0,0,W2,H2);var land=W2>H2,s0;if(land){s0=Math.max(W2/pi.naturalWidth,H2/pi.naturalHeight)*1.0;var w=pi.naturalWidth*s0,h=pi.naturalHeight*s0;ctx.fillStyle='rgb(18,10,34)';ctx.fillRect(0,0,W2,H2);ctx.drawImage(pi,W2*0.46-w*0.437,(H2-h)*0.5,w,h);}else{s0=Math.max(W2/pi.naturalWidth,H2/pi.naturalHeight)*1.0;var w2=pi.naturalWidth*s0,h2=pi.naturalHeight*s0;ctx.drawImage(pi,(W2-w2)/2,(H2-h2)*0.42,w2,h2);}}if(pi){if(pi.complete)pp();else pi.addEventListener('load',pp);}})();
+    filme.aoDecodificar=function(){if(!need){need=true;requestAnimationFrame(draw);}};(function(){var pi=sec.querySelector('.cposter');function pp(){if(!pi||sec.classList.contains('painted')||!pi.naturalWidth)return;rs();var W2=W,H2=H;if(!W2)return;ctx.clearRect(0,0,W2,H2);var land=W2>H2,s0;if(land){s0=Math.max(W2/pi.naturalWidth,H2/pi.naturalHeight)*1.0;var w=pi.naturalWidth*s0,h=pi.naturalHeight*s0;ctx.fillStyle='rgb(18,10,34)';ctx.fillRect(0,0,W2,H2);ctx.drawImage(pi,W2*0.44-w*0.44,(H2-h)*0.5,w,h);}else{s0=Math.max(W2/pi.naturalWidth,H2/pi.naturalHeight)*1.0;var w2=pi.naturalWidth*s0,h2=pi.naturalHeight*s0;ctx.drawImage(pi,(W2-w2)/2,(H2-h2)*0.42,w2,h2);}}if(pi){if(pi.complete)pp();else pi.addEventListener('load',pp);}})();
     function rs(){if(ROAD)sec.style.height=(ROAD+window.innerHeight)+'px';var r=sec.querySelector('.palco').getBoundingClientRect();W=r.width;H=r.height;
       var hc=sec.querySelector('.hc');if(hc){if(W>H){var cw=hc.offsetWidth;sec.style.setProperty('--hc-left',Math.max(24,Math.round(W*(ALVO_ESQ-VAO)-cw))+'px');}else{sec.style.removeProperty('--hc-left');}}cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);
       var rq=sec.getBoundingClientRect();PM.top=rq.top+(window.pageYOffset||0);PM.total=rq.height-window.innerHeight;}
@@ -1121,9 +1121,9 @@ section.hero.cineh{padding:0!important;min-height:0;height:auto;display:block;ov
         if(land){
           /* iPad de Ouro (02/09): filme ancorado à ESQUERDA em cover; a coluna de texto fica à direita, sobre a mesa escurecida por um degradê. */
           ctx.fillStyle='rgb('+COR+')';ctx.fillRect(0,0,W,H);
-          var BW=BASE?BASE.naturalWidth:bmp.width,BH=BASE?BASE.naturalHeight:bmp.height;var GEO={escala:1.0,colunaPreta:0,fimDegrade:0.46,fadeV:0.10,ipadEsq:0.437,alvoEsq:ALVO_ESQ};var COR='18,10,34';var s2=Math.max(W/BW,H/BH)*GEO.escala,w=BW*s2,h=BH*s2,dx=W*GEO.alvoEsq-w*GEO.ipadEsq,dy=(H-h)*0.5;
+          var BW=BASE?BASE.naturalWidth:bmp.width,BH=BASE?BASE.naturalHeight:bmp.height;var GEO={escala:1.0,colunaPreta:0,fimDegrade:0.0,fadeV:0.10,ipadEsq:0.44,alvoEsq:ALVO_ESQ};var COR='18,10,34';var s2=Math.max(W/BW,H/BH)*GEO.escala,w=BW*s2,h=BH*s2,dx=W*GEO.alvoEsq-w*GEO.ipadEsq,dy=(H-h)*0.5;
           if(BASE&&REC){var k=w/BASE.naturalWidth,rx=dx+REC[0]*k,ry=dy+REC[1]*k,rw=REC[2]*k,rh=REC[3]*k;ctx.drawImage(BASE,dx,dy,w,h);ctx.drawImage(bmp,rx,ry,rw,rh);if(bmp2){ctx.globalAlpha=fr;ctx.drawImage(bmp2,rx,ry,rw,rh);ctx.globalAlpha=1;}}else{ctx.drawImage(bmp,dx,dy,w,h);if(bmp2){ctx.globalAlpha=fr;ctx.drawImage(bmp2,dx,dy,w,h);ctx.globalAlpha=1;}}
-          var fD=ctx.createLinearGradient(W*GEO.fimDegrade,0,0,0);fD.addColorStop(0,'rgba('+COR+',0)');fD.addColorStop(0.45,'rgba('+COR+',0.30)');fD.addColorStop(1,'rgba('+COR+',0.55)');ctx.fillStyle=fD;ctx.fillRect(0,0,Math.ceil(W*GEO.fimDegrade),H);
+          /* véu e painel fosco vêm COZIDOS na placa (B3, 02/09) — nada a desenhar aqui */
           if(h<H-2){var fT=ctx.createLinearGradient(0,dy,0,dy+H*GEO.fadeV);fT.addColorStop(0,'rgba(11,10,8,1)');fT.addColorStop(1,'rgba(11,10,8,0)');ctx.fillStyle=fT;ctx.fillRect(0,0,W,dy+H*GEO.fadeV);var fBt=ctx.createLinearGradient(0,dy+h-H*GEO.fadeV,0,dy+h);fBt.addColorStop(0,'rgba(11,10,8,0)');fBt.addColorStop(1,'rgba(11,10,8,1)');ctx.fillStyle=fBt;ctx.fillRect(0,dy+h-H*GEO.fadeV,W,H-(dy+h-H*GEO.fadeV));}
           var fB=ctx.createLinearGradient(0,H*0.74,0,H);fB.addColorStop(0,'rgba(11,10,8,0)');fB.addColorStop(1,'rgba(11,10,8,0.88)');ctx.fillStyle=fB;ctx.fillRect(0,Math.floor(H*0.74),W,H);
         }else{
